@@ -33,6 +33,31 @@ export class TablesWidget9Component {
         .pipe(first())
         .subscribe(() => this.getUsers());
 }
-  
-  
+newUser: UserModel = {
+  _id: "",
+  username: '',
+  email: '',
+  password: '',
+  token: '',
+  setUser: function (_user: unknown): void {
+    throw new Error('Function not implemented.');
+  }
+};
+
+createUser(): void {
+  this.userService.createUser(this.newUser)
+    .subscribe((user: UserModel) => {
+      console.log('User created:', user);
+    }, (error) => {
+      console.error('Error creating user:', error);
+    });
 }
+}
+
+
+
+
+
+
+
+  

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserModel } from './user/user.model';
+import { AssureModel } from '../modules/auth/models/assure.model';
 
 
 @Injectable({
@@ -20,6 +21,9 @@ export class UserService {
   
   createUser(user: UserModel): Observable<UserModel> {
     return this.http.post<UserModel>(`${this.apiUrl}/api/auth/signup`, user);
+  }
+  addUser(user: AssureModel): Observable<AssureModel> {
+    return this.http.post<AssureModel>(`${this.apiUrl}/api/assures/addassure`, user);
   }
   deleteUser(_id: string): Observable<UserModel> {
     const url = `${this.apiUrl}/api/Admins/deleteuser/${_id}`;

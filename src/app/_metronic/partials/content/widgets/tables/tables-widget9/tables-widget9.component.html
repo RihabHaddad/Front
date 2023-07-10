@@ -62,10 +62,10 @@
               <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                 <span [inlineSVG]="'./assets/media/icons/duotune/general/gen019.svg'" class="svg-icon svg-icon-3"></span>
               </a>
-              <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'" class="svg-icon svg-icon-3"></span>
+              <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" routerLink="/crafted/account/settings">
+                <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'" class="svg-icon svg-icon-3" (click)="createUser()"></span>
               </a>
-              <a href="/users" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="deleteUser(user._id)">
+              <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="deleteUser(user._id)">
                 <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'" class="svg-icon svg-icon-3"></span>
               </a>
             </div>
