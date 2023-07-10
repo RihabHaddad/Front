@@ -21,8 +21,8 @@ export class UserService {
   createUser(user: UserModel): Observable<UserModel> {
     return this.http.post<UserModel>(`${this.apiUrl}/api/auth/signup`, user);
   }
-  deleteUser(userId: number): Observable<any> {
-    const url = `${this.apiUrl}/${userId}`;
-    return this.http.delete<any>(url);
+  deleteUser(_id: string): Observable<UserModel> {
+    const url = `${this.apiUrl}/api/Admins/deleteuser/${_id}`;
+    return this.http.delete<UserModel>(url);
   }
 }
