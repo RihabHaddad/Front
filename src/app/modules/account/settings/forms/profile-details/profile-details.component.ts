@@ -9,6 +9,7 @@ import { UserService } from 'src/app/pages/user.service';
   templateUrl: './profile-details.component.html',
 })
 export class ProfileDetailsComponent {
+  _id:string;
   username: string;
   email: string;
   password: string;
@@ -26,6 +27,7 @@ export class ProfileDetailsComponent {
   
     // Créez un nouvel utilisateur avec les valeurs du formulaire
     const newAssure: AssureModel = {
+      _id:this._id,
       username: this.username,
       firstName: this.firstName,
       lastName: this.lastName,
@@ -41,6 +43,7 @@ export class ProfileDetailsComponent {
     this.userService.addUser(newAssure).subscribe(
       () => {
         // Réinitialisez les valeurs du formulaire et l'indicateur de chargement
+        this._id = '';
         this.username = '';
         this.firstName = '';
         this.lastName = '';

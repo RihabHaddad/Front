@@ -14,6 +14,7 @@ import { NotificationsComponent } from './settings/forms/notifications/notificat
 import { SignInMethodComponent } from './settings/forms/sign-in-method/sign-in-method.component';
 import { DropdownMenusModule, WidgetsModule } from '../../_metronic/partials';
 import { FormsModule } from '@angular/forms';
+import { UpdateUserComponent } from './settings/forms/profile-details/update-user';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     EmailPreferencesComponent,
     NotificationsComponent,
     SignInMethodComponent,
+    UpdateUserComponent,
     
   ],
   imports: [

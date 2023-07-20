@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { UserListComponent } from '../_metronic/partials/content/cards/user-list/user-list.component';
+import { UpdateUserComponent } from '../modules/account/settings/forms/profile-details/update-user';
 
 const Routing: Routes = [
   {
@@ -51,6 +52,10 @@ const Routing: Routes = [
   {
     path: 'users',
     component: UserListComponent,
+  },
+  {
+    path: 'updateusers/:_id',
+    component: UpdateUserComponent,
   },
 ];
 

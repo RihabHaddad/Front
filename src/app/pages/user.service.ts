@@ -14,8 +14,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<UserModel[]> {
-    return this.http.get<UserModel[]>(`${this.apiUrl}/api/Admins`) as Observable<UserModel[]>;
+  getUsers(): Observable<AssureModel[]> {
+    return this.http.get<AssureModel[]>(`${this.apiUrl}/api/assures/`) as Observable<AssureModel[]>;
   }
     
   
@@ -25,8 +25,16 @@ export class UserService {
   addUser(user: AssureModel): Observable<AssureModel> {
     return this.http.post<AssureModel>(`${this.apiUrl}/api/assures/addassure`, user);
   }
-  deleteUser(_id: string): Observable<UserModel> {
-    const url = `${this.apiUrl}/api/Admins/deleteuser/${_id}`;
-    return this.http.delete<UserModel>(url);
+  deleteUser(_id: string): Observable<AssureModel> {
+    const url = `${this.apiUrl}/api/assures/deleteassure/${_id}`;
+    return this.http.delete<AssureModel>(url);
   }
+  getUserById(_id: string): Observable<AssureModel> {
+    return this.http.get<AssureModel>(`${this.apiUrl}/api/assures/${_id}`);
+  }
+  updateUser(user: AssureModel): Observable<AssureModel> {
+    const url = `${this.apiUrl}/api/assures/updateAssure/${user._id}`; // Assuming your API endpoint for updating a user is /users/:id
+    return this.http.put<AssureModel>(url, user);
+  }
+  
 }
