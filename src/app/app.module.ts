@@ -13,6 +13,9 @@ import { AuthService } from './modules/auth/services/auth.service';
 import { environment } from 'src/environments/environment';
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
+import { CardsComponent } from './pages/cards/cards.component';
+import { WidgetsModule } from './_metronic/partials/content/widgets/widgets.module';
+import { CardsModule } from './pages/cards/cards.module';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -31,6 +34,8 @@ function appInitializer(authService: AuthService) {
     TranslateModule.forRoot(),
     HttpClientModule,
     ClipboardModule,
+   
+    
     // #fake-start#
     environment.isMockEnabled
       ? HttpClientInMemoryWebApiModule.forRoot(FakeAPIService, {

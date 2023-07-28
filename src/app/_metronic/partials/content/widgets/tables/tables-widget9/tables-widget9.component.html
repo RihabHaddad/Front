@@ -4,7 +4,8 @@
     <div class="card-title">
         <!--begin::Search-->
         <div class="d-flex align-items-center position-relative my-1">
-            <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5"><span class="path1"></span><span class="path2"></span></i>                <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user">
+            <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5"><span class="path1"></span><span class="path2"></span></i>               
+             <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user">
         </div>
         <!--end::Search-->
     </div>
@@ -414,7 +415,7 @@ background-image: url('/metronic8/demo1/assets/media/svg/files/blank-image.svg')
           </td>
           <td>
             <div class="d-flex align-items-center">
-              <div class="symbol symbol-45px me-5" [ngStyle]="{ 'background-color': getAvatarBackgroundColor(user) }">
+              <div class="symbol symbol-45px me-5" [ngStyle]="{ 'background-color': associateUserWithColor }">
                 <ng-container *ngIf="user.firstName && user.lastName; else generateInitials">
                   <div class="symbol-label bg-primary">{{ getInitials(user.firstName, user.lastName) }}</div>
                 </ng-container>
@@ -447,11 +448,12 @@ background-image: url('/metronic8/demo1/assets/media/svg/files/blank-image.svg')
             <div class="d-flex justify-content-end flex-shrink-0">
               
               <a *ngIf="user && user._id" [routerLink]="['/updateusers', user._id]" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'" class="svg-icon svg-icon-3" (click)="onEditUser(user)"></span>
+                <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'" class="svg-icon svg-icon-3"></span>
               </a>
-           <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="deleteUser(user._id)">
-                <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'" class="svg-icon svg-icon-3" (click)="deleteUser(user._id)"></span>
+              <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="deleteUser(user._id)">
+                <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'" class="svg-icon svg-icon-3"></span>
               </a>
+              
             </div>
           </td>
         </tr>

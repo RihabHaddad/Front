@@ -36,5 +36,11 @@ export class UserService {
     const url = `${this.apiUrl}/api/assures/updateAssure/${user._id}`; // Assuming your API endpoint for updating a user is /users/:id
     return this.http.put<AssureModel>(url, user);
   }
+  searchUsers(searchTerm: string): Observable<AssureModel[]> {
+    return this.http.get<AssureModel[]>(`${this.apiUrl}/search?username=${searchTerm}`);
+  }
+  getDistance(_id: string){
+    return this.http.get('/api/Admins/RetreiveDistance/'+_id);
+  }
   
 }

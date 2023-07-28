@@ -1,6 +1,11 @@
 import { Routes } from '@angular/router';
 import { UserListComponent } from '../_metronic/partials/content/cards/user-list/user-list.component';
 import { UpdateUserComponent } from '../modules/account/settings/forms/profile-details/update-user';
+import { CardsComponent } from './cards/cards.component';
+import { TablesWidget11Component } from '../_metronic/partials/content/widgets/tables/tables-widget11/tables-widget11.component';
+import { AdvanceTablesWidget9Component } from '../_metronic/partials/content/widgets/advance-tables/advance-tables-widget9/advance-tables-widget9.component';
+import { TablesWidget13Component } from '../_metronic/partials/content/widgets/tables/tables-widget13/tables-widget13.component';
+import { TablesWidget10Component } from '../_metronic/partials/content/widgets/tables/tables-widget10/tables-widget10.component';
 
 const Routing: Routes = [
   {
@@ -57,6 +62,11 @@ const Routing: Routes = [
     path: 'updateusers/:_id',
     component: UpdateUserComponent,
   },
+  {
+    path: 'Cards',
+    component: CardsComponent,
+  },
+  
 ];
 
 export { Routing };
