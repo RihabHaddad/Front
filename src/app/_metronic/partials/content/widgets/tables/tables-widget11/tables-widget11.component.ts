@@ -24,4 +24,6 @@ export class TablesWidget11Component implements OnInit {
         console.error('Error loading cards:', error);
       }
     );
-  }}
+  }
+  
+}
