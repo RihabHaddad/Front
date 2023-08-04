@@ -6,6 +6,7 @@ import { TablesWidget11Component } from '../_metronic/partials/content/widgets/t
 import { AdvanceTablesWidget9Component } from '../_metronic/partials/content/widgets/advance-tables/advance-tables-widget9/advance-tables-widget9.component';
 import { TablesWidget13Component } from '../_metronic/partials/content/widgets/tables/tables-widget13/tables-widget13.component';
 import { TablesWidget10Component } from '../_metronic/partials/content/widgets/tables/tables-widget10/tables-widget10.component';
+import { AddCardComponent } from './add-card/add-card.component';
 
 const Routing: Routes = [
   {
@@ -65,6 +66,10 @@ const Routing: Routes = [
   {
     path: 'Cards',
     component: CardsComponent,
+  },
+  {
+    path: 'AddCards',
+    component: AddCardComponent,
   },
   
 ];

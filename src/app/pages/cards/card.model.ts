@@ -1,5 +1,5 @@
 export interface Card {
-    _id?: string;
+    _id: string;
     vehicleNumber: string;
     ownerName: string;
     registrationDate: Date;

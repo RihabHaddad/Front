@@ -16,6 +16,8 @@ import { FakeAPIService } from './_fake/fake-api.service';
 import { CardsComponent } from './pages/cards/cards.component';
 import { WidgetsModule } from './_metronic/partials/content/widgets/widgets.module';
 import { CardsModule } from './pages/cards/cards.module';
+import { AddCardComponent } from './pages/add-card/add-card.component';
+import { FormsModule } from '@angular/forms';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -27,13 +29,15 @@ function appInitializer(authService: AuthService) {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AddCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
     HttpClientModule,
     ClipboardModule,
+    FormsModule, // Add FormsModule here
+
    
     
     // #fake-start#

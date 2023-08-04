@@ -14,7 +14,7 @@ export class CardService {
 
   // Create a new card
   createCard(card: Card): Observable<Card> {
-    return this.http.post<Card>(`${this.apiUrl}/cards`, card);
+    return this.http.post<Card>(`${this.apiUrl}/addcar`, card);
   }
 
   // Get all cards
@@ -33,7 +33,7 @@ export class CardService {
   }
 
   // Delete a card by ID
-  deleteCard(_id: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/deletecar/${_id}`);
+  deleteCard(_id: string): Observable<Card> {
+    return this.http.delete<Card>(`${this.apiUrl}/deletecar/${_id}`);
   }
 }

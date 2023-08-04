@@ -30,6 +30,7 @@ export class CardsComponent implements OnInit {
 
   createCard() {
     const newCard: Card = {
+      _id:'1',
       vehicleNumber: 'ABC123',
       ownerName: 'John Doe',
       registrationDate: new Date('2023-07-30'),
