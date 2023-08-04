@@ -18,6 +18,7 @@ import { WidgetsModule } from './_metronic/partials/content/widgets/widgets.modu
 import { CardsModule } from './pages/cards/cards.module';
 import { AddCardComponent } from './pages/add-card/add-card.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateCardComponent } from './pages/update-card/update-card.component';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -29,7 +30,7 @@ function appInitializer(authService: AuthService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, AddCardComponent],
+  declarations: [AppComponent, AddCardComponent, UpdateCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

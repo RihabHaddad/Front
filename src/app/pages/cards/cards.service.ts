@@ -24,14 +24,14 @@ export class CardService {
 
   // Get a single card by ID
   getCardById(cardId: string): Observable<Card> {
-    return this.http.get<Card>(`${this.apiUrl}/cards/${cardId}`);
+    return this.http.get<Card>(`${this.apiUrl}/${cardId}`);
   }
 
-  // Update a card by ID
-  updateCard(cardId: string, card: Card): Observable<Card> {
-    return this.http.put<Card>(`${this.apiUrl}/cards/${cardId}`, card);
-  }
 
+  updateCard(card: Card): Observable<Card> {
+    const url = `${this.apiUrl}/updatecar/${card._id}`; // Assuming your API endpoint for updating a user is /users/:id
+    return this.http.put<Card>(url, card);
+  }
   // Delete a card by ID
   deleteCard(_id: string): Observable<Card> {
     return this.http.delete<Card>(`${this.apiUrl}/deletecar/${_id}`);

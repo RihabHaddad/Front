@@ -1,4 +1,4 @@
-export interface Card {
+export class Card {
     _id: string;
     vehicleNumber: string;
     ownerName: string;

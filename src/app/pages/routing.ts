@@ -7,6 +7,7 @@ import { AdvanceTablesWidget9Component } from '../_metronic/partials/content/wid
 import { TablesWidget13Component } from '../_metronic/partials/content/widgets/tables/tables-widget13/tables-widget13.component';
 import { TablesWidget10Component } from '../_metronic/partials/content/widgets/tables/tables-widget10/tables-widget10.component';
 import { AddCardComponent } from './add-card/add-card.component';
+import { UpdateCardComponent } from './update-card/update-card.component';
 
 const Routing: Routes = [
   {
@@ -70,6 +71,10 @@ const Routing: Routes = [
   {
     path: 'AddCards',
     component: AddCardComponent,
+  },
+  {
+    path: 'updateCards/:_id',
+    component: UpdateCardComponent,
   },
   
 ];

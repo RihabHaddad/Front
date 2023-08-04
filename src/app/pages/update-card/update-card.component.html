@@ -1,0 +1,444 @@
+<div class="portlet">
+    <h3 class="fw-bolder m-0">Update Card</h3>
+    <div class="portlet-body">
+      <i class="fas fa-car"></i>
+      <!-- Step 1: Basic Information -->
+      <div *ngIf="currentStep === 1">
+        <form (ngSubmit)="nextStep()" #step1Form="ngForm">
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Owner Name <span class="required">*</span></label>
+            <input class="form-control form-control-lg form-control-solid" type="text" name="ownerName" [(ngModel)]="selectedCard.ownerName" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Vehicle Number <span class="required">*</span></label>
+            <input type="text" class="form-control" name="vehicleNumber" [(ngModel)]="selectedCard.vehicleNumber" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Registration Date <span class="required">*</span></label>
+            <input type="date" class="form-control" name="registrationDate" [(ngModel)]="selectedCard.registrationDate" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Expiry Date <span class="required">*</span></label>
+            <input type="date" class="form-control" name="expiryDate" [(ngModel)]="selectedCard.expiryDate" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Next Step</button>
+        </form>
+      </div>
+  
+      <!-- Step 2: Additional Information -->
+      <div *ngIf="currentStep === 2">
+        <form (ngSubmit)="nextStep()" #step2Form="ngForm">
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Contract Number <span class="required">*</span></label>
+            <input type="text" class="form-control" name="numContrat" [(ngModel)]="selectedCard.NumContrat" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Driver ID <span class="required">*</span></label>
+            <input type="number" class="form-control" name="driverId" [(ngModel)]="selectedCard.DriverId" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Registration Number <span class="required">*</span></label>
+            <input type="text" class="form-control" name="numImmatricule" [(ngModel)]="selectedCard.NumImmatricule" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Serial Number <span class="required">*</span></label>
+            <input type="text" class="form-control" name="numSerie" [(ngModel)]="selectedCard.NumSerie" required>
+          </div>
+          <button type="button" class="btn btn-default" (click)="prevStep()">Previous Step</button>
+          <button type="submit" class="btn btn-primary">Next Step</button>
+        </form>
+      </div>
+  
+      <!-- Step 3: Additional Information -->
+      <div *ngIf="currentStep === 3">
+        <form (ngSubmit)="nextStep()" #step3Form="ngForm">
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Class Bonus <span class="required">*</span></label>
+            <input type="text" class="form-control" name="classBonus" [(ngModel)]="selectedCard.ClassBonus" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Brand <span class="required">*</span></label>
+            <input type="text" class="form-control" name="marque" [(ngModel)]="selectedCard.Marque" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Power <span class="required">*</span></label>
+            <input type="text" class="form-control" name="puissance" [(ngModel)]="selectedCard.Puissance" required>
+          </div>
+          <div class="form-group">
+            <label class="text-muted mt-1 fw-bold fs-7">Number of Seats <span class="required">*</span></label>
+            <input type="text" class="form-control" name="nbrePlace" [(ngModel)]="selectedCard.NbrePlace" required>
+          </div>
+          <button type="button" class="btn btn-default" (click)="prevStep()">Previous Step</button>
+          <button type="submit" class="btn btn-primary">Next Step</button>
+        </form>
+      </div>
+  
+      <!-- Step 4: Confirmation -->
+      <div *ngIf="currentStep === 4">
+        <h3>Summary</h3>
+        <p><strong>Owner Name:</strong> {{ selectedCard.ownerName }}</p>
+        <p><strong>Vehicle Number:</strong> {{ selectedCard.vehicleNumber }}</p>
+        <p><strong>Registration Date:</strong> {{ selectedCard.registrationDate | date: 'yyyy-MM-dd' }}</p>
+        <p><strong>Expiry Date:</strong> {{ selectedCard.expiryDate | date: 'yyyy-MM-dd' }}</p>
+        <p><strong>Contract Number:</strong> {{ selectedCard.NumContrat }}</p>
+        <p><strong>Driver ID:</strong> {{ selectedCard.DriverId }}</p>
+        <p><strong>Registration Number:</strong> {{ selectedCard.NumImmatricule }}</p>
+        <p><strong>Serial Number:</strong> {{ selectedCard.NumSerie }}</p>
+        <p><strong>Class Bonus:</strong> {{ selectedCard.ClassBonus }}</p>
+        <p><strong>Brand:</strong> {{ selectedCard.Marque }}</p>
+        <p><strong>Power:</strong> {{ selectedCard.Puissance }}</p>
+        <p><strong>Number of Seats:</strong> {{ selectedCard.NbrePlace }}</p>
+        <button type="button" class="btn btn-default" (click)="prevStep()">Previous Step</button>
+        <button type="button" class="btn btn-success" (click)="updateSelectedCard()">Confirm</button>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  /* Add-car component CSS */
+
+/* Car icon styles */
+.portlet-body .fa-car {
+font-size: 40px;
+color: #007bff;
+margin-bottom: 10px;
+}
+
+/* Form container styles */
+.portlet {
+max-width: 500px;
+margin: 0 auto;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+background-color: #f9f9f9;
+}
+
+/* Form group styles */
+.form-group {
+margin-bottom: 20px;
+}
+
+/* Label styles */
+.form-group label {
+font-size: 12px;
+font-family: 'Poppins';
+font-style: normal;
+color: #333;
+}
+
+/* Input and textarea styles */
+.form-control {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 3px;
+background-color: #fff;
+font-size: 14px;
+color: #333;
+}
+
+/* Primary button styles */
+.btn-primary {
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 3px;
+padding: 10px 20px;
+cursor: pointer;
+}
+
+.btn-primary:hover {
+background-color: #0056b3;
+}
+
+/* Default button styles */
+.btn-default {
+background-color: #f0f0f0;
+color: #333;
+border: none;
+border-radius: 3px;
+padding: 10px 20px;
+cursor: pointer;
+}
+
+.btn-default:hover {
+background-color: #d4d4d4;
+}
+
+/* Success button styles */
+.btn-success {
+background-color: #28a745;
+color: #fff;
+border: none;
+border-radius: 3px;
+padding: 10px 20px;
+cursor: pointer;
+}
+
+.btn-success:hover {
+background-color: #1e7d34;
+}
+
+/* Additional styles for the form layout */
+form {
+display: flex;
+flex-direction: column;
+}
+
+form button {
+margin-top: 10px;
+}
+
+/* Center the form horizontally */
+.portlet-body {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+/* Required label styles */
+.required:after {
+content: "*";
+position: relative;
+font-size: inherit;
+color: #ff4d4f;
+padding-left: 0.25rem;
+font-weight: bold;
+}
+
+/* Input group styles */
+.input-group {
+&.input-group-solid {
+  background-color: #f9f9f9;
+  border-color: #f9f9f9;
+  border-radius: 3px;
+
+  &.input-group-sm {
+    border-radius: 3px;
+  }
+
+  &.input-group-lg {
+    border-radius: 5px;
+  }
+
+  .input-group-text {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .form-control {
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+}
+
+/* Form select styles */
+.form-select {
+box-shadow: none !important;
+
+
+
+  .dropdown.show > &,
+  &:active,
+  &.active,
+  &:focus,
+  &.focus {
+    background-color: #f2f2f2;
+    border-color: #f2f2f2 !important;
+    color: #333;
+    transition: 0.2s;
+  }
+
+
+
+&.form-select-white {
+  background-color: #fff;
+  border-color: #fff;
+  color: #333;
+
+  .dropdown.show > &,
+  &:active,
+  &.active,
+  &:focus,
+  &.focus {
+    background-color: #fff;
+    border-color: #fff !important;
+    color: #333;
+  }
+}
+
+
+/* Textarea reset resize */
+.resize-none {
+resize: none;
+}
+
+
+
+
+
+
+}
+
+
+&.form-check-solid {
+  .form-check-input {
+    border: 0;
+    background-color: #f9f9f9;
+
+    &:active,
+    &:focus {
+      filter: none;
+      background-color: #f9f9f9;
+    }
+
+    &:checked {
+      background-color: #28a745;
+    }
+  }
+  .card .card-header {
+display: flex;
+justify-content: space-between;
+align-items: stretch;
+flex-wrap: wrap;
+min-height: 70px;
+padding: 0 2.25rem;
+background-color: transparent;
+}
+/* Form Input Styles */
+.form-control {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+background-color: #fff;
+font-size: 14px;
+color: #333;
+transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+outline: none;
+border-color: #007bff;
+box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Form Textarea Styles */
+.form-control.textarea {
+resize: vertical;
+}
+
+/* Form Select Styles */
+.form-select {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+background-color: #fff;
+font-size: 14px;
+color: #333;
+appearance: none;
+transition: border-color 0.2s ease;
+background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'%3E%3C/path%3E%3C/svg%3E");
+background-repeat: no-repeat;
+background-position: right 0.75rem center;
+background-size: 8px 10px;
+}
+
+.form-select:focus {
+outline: none;
+border-color: #007bff;
+box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Form Checkbox and Radio Styles */
+.form-check-input {
+position: relative;
+margin-top: 0;
+margin-right: 0;
+margin-left: -1.25rem;
+width: 1.25rem;
+height: 1.25rem;
+background-color: #f9f9f9;
+border: 1px solid #ccc;
+border-radius: 3px;
+cursor: pointer;
+transition: background-color 0.2s ease;
+}
+
+.form-check-input:checked {
+background-color: #28a745;
+border-color: #28a745;
+}
+
+.form-check-input:focus {
+outline: none;
+box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Form Checkbox and Radio Labels Styles */
+.form-check-label {
+cursor: pointer;
+}
+
+/* Form Radio Styles */
+.form-check-input[type="radio"] {
+border-radius: 50%;
+}
+
+/* Required Label Styles */
+.required:after {
+content: "*";
+position: relative;
+font-size: inherit;
+color: #ff4d4f;
+padding-left: 0.25rem;
+font-weight: bold;
+}
+
+/* Button Styles */
+.btn {
+display: inline-block;
+padding: 10px 20px;
+border: none;
+border-radius: 3px;
+font-size: 14px;
+cursor: pointer;
+transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+background-color: #007bff;
+color: #fff;
+}
+
+.btn-primary:hover {
+background-color: #0056b3;
+}
+
+.btn-default {
+background-color: #f0f0f0;
+color: #333;
+}
+
+.btn-default:hover {
+background-color: #d4d4d4;
+}
+
+.btn-success {
+background-color: #28a745;
+color: #fff;
+}
+
+.btn-success:hover {
+background-color: #1e7d34;
+}
+
+}
+
+</style>
+  

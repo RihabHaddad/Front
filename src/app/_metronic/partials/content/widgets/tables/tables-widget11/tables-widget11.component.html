@@ -97,20 +97,9 @@
               </span>
             </td>
             <td class="text-end">
+          
               <a
-                href="#"
-                class="
-                  btn btn-icon btn-bg-light btn-active-color-primary btn-sm
-                  me-1
-                "
-              >
-                <span
-                  [inlineSVG]="'./assets/media/icons/duotune/general/gen019.svg'"
-                  class="svg-icon svg-icon-3"
-                ></span>
-              </a>
-              <a
-                href="#"
+               *ngIf="card && card._id" [routerLink]="['/updateCards', card._id]"
                 class="
                   btn btn-icon btn-bg-light btn-active-color-primary btn-sm
                   me-1
@@ -121,8 +110,8 @@
                   class="svg-icon svg-icon-3"
                 ></span>
               </a>
-              <a
-                href="#"
+              <a   
+                
                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
               >
                 <span
