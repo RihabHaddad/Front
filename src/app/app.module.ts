@@ -1,3 +1,4 @@
+
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +20,17 @@ import { CardsModule } from './pages/cards/cards.module';
 import { AddCardComponent } from './pages/add-card/add-card.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateCardComponent } from './pages/update-card/update-card.component';
+import { AccidentComponent } from './pages/accident/accident.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { DriverBehaviorComponent } from './pages/driver-behavior/driver-behavior.component';
+import { WidgetsExamplesModule } from './modules/widgets-examples/widgets-examples.module';
+import { WidgetsExamplesRoutingModule } from './modules/widgets-examples/widgets-examples-routing.module';
+import { MixedComponent } from './modules/widgets-examples/mixed/mixed.component';
+import { ChartsComponent } from './modules/widgets-examples/charts/charts.component';
+import { StatisticsComponent } from './modules/widgets-examples/statistics/statistics.component';
+import { ListsComponent } from './modules/widgets-examples/lists/lists.component';
+import { WidgetsExamplesComponent } from './modules/widgets-examples/widgets-examples.component';
+import { DriverBehaviorModule } from './pages/driver-behavior/driver-behavior.module';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -30,14 +42,17 @@ function appInitializer(authService: AuthService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, AddCardComponent, UpdateCardComponent],
+  declarations: [AppComponent, AddCardComponent, UpdateCardComponent, 
+    AccidentComponent, NotificationsComponent, 
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
     HttpClientModule,
     ClipboardModule,
-    FormsModule, // Add FormsModule here
+    FormsModule, // Add FormsModule here7
+   
 
    
     
@@ -52,6 +67,7 @@ function appInitializer(authService: AuthService) {
     AppRoutingModule,
     InlineSVGModule.forRoot(),
     NgbModule,
+    
   ],
   providers: [
     {

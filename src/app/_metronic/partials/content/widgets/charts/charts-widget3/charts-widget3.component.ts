@@ -1,5 +1,8 @@
+import * as moment from 'moment';
+
 import { Component, OnInit } from '@angular/core';
 import { getCSSVariableValue } from '../../../../../kt/_utils';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-charts-widget3',
@@ -8,14 +11,31 @@ import { getCSSVariableValue } from '../../../../../kt/_utils';
 export class ChartsWidget3Component implements OnInit {
   chartOptions: any = {};
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.chartOptions = getChartOptions(350);
+    this.fetchDriverData();
   }
+
+  fetchDriverData() {
+    this.http.get<any>('http://localhost:8002/api/driver1Data').subscribe((data) => {
+      const speedData = data.speedData;
+      const timeData = data.timeData;
+  
+      // Convert timeData to Date objects
+      const dateObjects = timeData.map((timeStr: string) => new Date(timeStr));
+  
+      // Format date objects as strings in the desired format
+      const formattedTimeData = dateObjects.map((date: Date) => moment(date).format("YYYY-MM-DD HH:mm:ss"));
+  
+      // Update the chartOptions with the fetched data and formatted time
+      this.chartOptions = getChartOptions(speedData, formattedTimeData);
+    });
+  }
+  
 }
 
-function getChartOptions(height: number) {
+function getChartOptions(speedData: number[], timeData: Date[]) {
   const labelColor = getCSSVariableValue('--bs-gray-500');
   const borderColor = getCSSVariableValue('--bs-gray-200');
   const baseColor = getCSSVariableValue('--bs-info');
@@ -24,8 +44,8 @@ function getChartOptions(height: number) {
   return {
     series: [
       {
-        name: 'Net Profit',
-        data: [30, 40, 40, 90, 90, 70, 70],
+        name: 'Speed Data',
+        data: speedData,
       },
     ],
     chart: {
@@ -54,10 +74,8 @@ function getChartOptions(height: number) {
       colors: [baseColor],
     },
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-      axisBorder: {
-        show: false,
-      },
+      categories: timeData, // Use timeData as categories
+      // ... Rest of your xaxis configuration ...
       axisTicks: {
         show: false,
       },
@@ -118,9 +136,7 @@ function getChartOptions(height: number) {
         fontSize: '12px',
       },
       y: {
-        formatter: function (val: number) {
-          return '$' + val + ' thousands';
-        },
+       
       },
     },
     colors: [lightColor],

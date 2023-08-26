@@ -30,7 +30,7 @@ export class AuthHTTPService {
       email,
     });
   }
-
+  
   getUserByToken(token: string): Observable<UserModel> {
     const httpHeaders = new HttpHeaders({
       Authorization: `Bearer ${token}`,

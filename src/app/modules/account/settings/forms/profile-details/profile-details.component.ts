@@ -19,6 +19,7 @@ export class ProfileDetailsComponent {
   phoneNumber: string;
   cin: string;
   drivingLicense: string;
+  Registrations: [];
 
   constructor(private userService: UserService) {}
 
@@ -34,7 +35,8 @@ export class ProfileDetailsComponent {
       email: this.email,
       phoneNumber: this.phoneNumber,
       cin: this.cin,
-      drivingLicense: this.drivingLicense
+      drivingLicense: this.drivingLicense,
+      Registrations: this.Registrations
     };
   
     

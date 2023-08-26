@@ -7,9 +7,10 @@ import { AuthHTTPService } from './auth-http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/pages/user.service';
+import { HttpClient } from '@angular/common/http';
 
 export type UserType = UserModel | undefined;
-
+const API_USERS_URL = `http://localhost:8002`;
 @Injectable({
   providedIn: 'root',
 })
@@ -35,7 +36,8 @@ export class AuthService implements OnDestroy {
 
   constructor(
     private authHttpService: AuthHTTPService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.currentUserSubject = new BehaviorSubject<UserType>(undefined);
@@ -61,7 +63,9 @@ export class AuthService implements OnDestroy {
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
-  
+  resetPassword( resetToken: string,newPassword: string): Observable<any> {
+    return this.http.post(`${API_USERS_URL}/reset-password`, { resetToken ,newPassword  });
+  }
 
   logout() {
     localStorage.removeItem(this.authLocalStorageToken);

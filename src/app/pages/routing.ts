@@ -8,6 +8,10 @@ import { TablesWidget13Component } from '../_metronic/partials/content/widgets/t
 import { TablesWidget10Component } from '../_metronic/partials/content/widgets/tables/tables-widget10/tables-widget10.component';
 import { AddCardComponent } from './add-card/add-card.component';
 import { UpdateCardComponent } from './update-card/update-card.component';
+import { DriverBehaviorComponent } from './driver-behavior/driver-behavior.component';
+import { SignInMethodComponent } from '../modules/account/settings/forms/sign-in-method/sign-in-method.component';
+import { ResetPasswordComponent } from '../modules/auth/components/reset-password/reset-password.component';
+import { DistanceComponent } from './distance/distance.component';
 
 const Routing: Routes = [
   {
@@ -76,6 +80,13 @@ const Routing: Routes = [
     path: 'updateCards/:_id',
     component: UpdateCardComponent,
   },
+  {
+  path: 'DriverBehavior',
+  component: DriverBehaviorComponent ,},
+  {
+    path: 'Distance',
+    component: DistanceComponent ,},
+    
   
 ];
 

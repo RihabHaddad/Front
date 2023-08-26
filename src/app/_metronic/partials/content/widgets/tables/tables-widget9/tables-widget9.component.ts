@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
@@ -25,7 +26,7 @@ export class TablesWidget9Component {
   
   selectedUser: AssureModel = new AssureModel();
   constructor(private userService: UserService , private router: Router
-   , private elementRef: ElementRef ) { }
+   , private elementRef: ElementRef ,private http: HttpClient ) { }
   
   ngOnInit() {
     this.getUsers();
@@ -87,7 +88,7 @@ redirectToupdateUserPage() {
   this.router.navigate(['/updateusers']);
 }
 
-searchUsers(searchTerm: string): void {
+searchUserss(searchTerm: string): void {
   if (!searchTerm) {
     this.getUsers(); // Réinitialiser la liste des utilisateurs en cas de recherche vide
     return;
@@ -127,6 +128,34 @@ associateUserWithColor(user: AssureModel): string {
   return userColor !== undefined ? userColor : ''; // Utilisez une valeur par défaut (une chaîne vide '') si userColor est undefined.
 }
 
+searchTerm: string;
+users: any[] = [];
+errorMessage: string;
+
+
+searchUsers() {
+  if (!this.searchTerm) {
+    this.errorMessage = 'Veuillez fournir un terme de recherche valide';
+    return;
+  }
+
+  this.http.get<AssureModel[]>(`/search?username=${this.searchTerm}`)
+    .subscribe(
+      (response) => {
+        if (response.length === 0) {
+          this.errorMessage = 'Aucun utilisateur trouvé';
+          this.users = [];
+        } else {
+          this.users = response;
+          this.errorMessage = '';
+        }
+      },
+      (error) => {
+        this.errorMessage = 'Une erreur est survenue lors de la recherche des utilisateurs';
+        console.error(error);
+      }
+    );
+}
 
 }
 

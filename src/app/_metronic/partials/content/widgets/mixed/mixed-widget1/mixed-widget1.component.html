@@ -3,7 +3,7 @@
   <div class="px-9 pt-7 card-rounded h-275px w-100" [ngClass]="'bg-' + color">
     <!-- begin::Heading -->
     <div class="d-flex flex-stack">
-      <h3 class="m-0 text-white fw-bolder fs-3">Sales Summary</h3>
+      <h3 class="m-0 text-white fw-bolder fs-3">Driver Behavior KPIS</h3>
       <div class="ms-1">
         <!-- begin::Menu -->
         <button
@@ -33,6 +33,7 @@
       <span class="fw-bold fs-7">You Balance</span>
       <span class="fw-bolder fs-2x pt-1">$37,562.00</span>
     </div>
+    
     <!-- end::Balance -->
   </div>
   <!-- end::Header -->
@@ -52,7 +53,115 @@
     [style.margin-top]="'-100px'"
   >
     <!-- begin::Item -->
+    <div class="d-flex align-items-center mb-6" *ngFor="let kpi of driverKPIs; let i = index">
+      <!-- begin::Symbol -->
+      <div class="symbol symbol-45px w-40px me-5">
+        <span class="symbol-label bg-lighten">
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/general/gen005.svg'"
+            class="svg-icon svg-icon-1"
+          ></span>
+        </span>
+      </div>
+      <!-- end::Symbol -->
+      <!-- begin::Description -->
+      <div class="d-flex align-items-center flex-wrap w-100" *ngFor="let kpi of driverKPIs; let i = index">
+        <!-- begin::Title -->
+        <div class="mb-1 pe-3 flex-grow-1">
+          <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
+            Mean Speed
+          </a>
+
+                    <div class="text-gray-400 fw-bold fs-7"> </div>        </div>
+        <!-- end::Title -->
+        <!-- begin::Label -->
+        <div class="d-flex align-items-center">
+          <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ kpi.MeanSpeed }}</div>
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/arrows/arr066.svg'"
+            class="svg-icon svg-icon-5 svg-icon-success ms-1"
+          ></span>
+        </div>
+        <!-- end::Label -->
+      </div>
+      <!-- end::Description -->
+    </div>
+    <!-- end::Item -->
+    <!-- begin::Item -->
     <div class="d-flex align-items-center mb-6">
+      <!-- begin::Symbol -->
+      <div class="symbol symbol-45px w-40px me-5" *ngFor="let kpi of driverKPIs; let i = index">
+        <span class="symbol-label bg-lighten">
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/general/gen024.svg'"
+            class="svg-icon svg-icon-1"
+          ></span>
+        </span>
+      </div>
+      <!-- end::Symbol -->
+      <!-- begin::Description -->
+      <div class="d-flex align-items-center flex-wrap w-100">
+        <!-- begin::Title -->
+        <div class="mb-1 pe-3 flex-grow-1">
+          <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
+            MaxSpeed
+
+          </a>
+          <div class="text-gray-400 fw-bold fs-7"></div>
+        </div>
+        <!-- end::Title -->
+        <!-- begin::Label -->
+        <div class="d-flex align-items-center" *ngFor="let kpi of driverKPIs; let i = index">
+          <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ kpi.MaxSpeed }}</div>
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/general/gen024.svg'"
+            class="svg-icon svg-icon-5 svg-icon-danger ms-1"
+          ></span>
+        </div>
+        <!-- end::Label -->
+      </div>
+      <!-- end::Description -->
+    </div>
+    <!-- end::Item -->
+    <!-- begin::Item -->
+    <div class="d-flex align-items-center mb-6" *ngFor="let kpi of driverKPIs; let i = index">
+      <!-- begin::Symbol -->
+      <div class="symbol symbol-45px w-40px me-5">
+        <span class="symbol-label bg-lighten">
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/electronics/elc005.svg'"
+            class="svg-icon svg-icon-1"
+          ></span>
+        </span>
+      </div>
+      <!-- end::Symbol -->
+      <!-- begin::Description -->
+      <div class="d-flex align-items-center flex-wrap w-100" *ngFor="let kpi of driverKPIs; let i = index">
+        <!-- begin::Title -->
+        <div class="mb-1 pe-3 flex-grow-1">
+          <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
+          
+StdSpeed
+
+          </a>
+          <div class="text-gray-400 fw-bold fs-7"></div>
+        </div>
+        <!-- end::Title -->
+        <!-- begin::Label -->
+        <div class="d-flex align-items-center">
+          <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ kpi.StdSpeed }}</div>
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/arrows/arr066.svg'"
+            class="svg-icon svg-icon-5 svg-icon-success ms-1"
+          ></span>
+        </div>
+        <!-- end::Label -->
+      </div>
+      <!-- end::Description -->
+    </div>
+    <!-- end::Item -->
+    <!-- begin::Item -->
+    <div class="d-flex align-items-center" *ngFor="let kpi of driverKPIs; let i = index">
       <!-- begin::Symbol -->
       <div class="symbol symbol-45px w-40px me-5">
         <span class="symbol-label bg-lighten">
@@ -68,31 +177,33 @@
         <!-- begin::Title -->
         <div class="mb-1 pe-3 flex-grow-1">
           <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
-            Sales
+            
+HarshAcceleration
           </a>
-          <div class="text-gray-400 fw-bold fs-7">100 Regions</div>
+          <div class="text-gray-400 fw-bold fs-7"></div>
         </div>
         <!-- end::Title -->
         <!-- begin::Label -->
-        <div class="d-flex align-items-center">
-          <div class="fw-bolder fs-5 text-gray-800 pe-1">$2,5b</div>
+        <div class="d-flex align-items-center" *ngFor="let kpi of driverKPIs; let i = index">
+          <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ kpi.HarshAcceleration }}</div>
           <span
-            [inlineSVG]="'./assets/media/icons/duotune/arrows/arr066.svg'"
-            class="svg-icon svg-icon-5 svg-icon-success ms-1"
+            [inlineSVG]="'./assets/media/icons/duotune/arrows/arr065.svg'"
+            class="svg-icon svg-icon-5 svg-icon-danger ms-1"
           ></span>
         </div>
+       
         <!-- end::Label -->
       </div>
+      
       <!-- end::Description -->
     </div>
     <!-- end::Item -->
-    <!-- begin::Item -->
-    <div class="d-flex align-items-center mb-6">
+    <div class="d-flex align-items-center mb-6" *ngFor="let kpi of driverKPIs; let i = index">
       <!-- begin::Symbol -->
       <div class="symbol symbol-45px w-40px me-5">
         <span class="symbol-label bg-lighten">
           <span
-            [inlineSVG]="'./assets/media/icons/duotune/general/gen024.svg'"
+            [inlineSVG]="'./assets/media/icons/duotune/general/gen005.svg'"
             class="svg-icon svg-icon-1"
           ></span>
         </span>
@@ -103,16 +214,16 @@
         <!-- begin::Title -->
         <div class="mb-1 pe-3 flex-grow-1">
           <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
-            Revenue
+            HarshBraking
           </a>
-          <div class="text-gray-400 fw-bold fs-7">Quarter 2/3</div>
+          <div class="text-gray-400 fw-bold fs-7"></div>
         </div>
         <!-- end::Title -->
         <!-- begin::Label -->
         <div class="d-flex align-items-center">
-          <div class="fw-bolder fs-5 text-gray-800 pe-1">$1,7b</div>
+          <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ kpi.HarshBraking }}</div>
           <span
-            [inlineSVG]="'./assets/media/icons/duotune/general/gen024.svg'"
+            [inlineSVG]="'./assets/media/icons/duotune/arrows/arr066.svg'"
             class="svg-icon svg-icon-5 svg-icon-danger ms-1"
           ></span>
         </div>
@@ -122,7 +233,42 @@
     </div>
     <!-- end::Item -->
     <!-- begin::Item -->
-    <div class="d-flex align-items-center mb-6">
+    <div class="d-flex align-items-center mb-6" *ngFor="let kpi of driverKPIs; let i = index">
+      <!-- begin::Symbol -->
+      <div class="symbol symbol-45px w-40px me-5">
+        <span class="symbol-label bg-lighten">
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/general/gen005.svg'"
+            class="svg-icon svg-icon-1"
+          ></span>
+        </span>
+      </div>
+      <!-- end::Symbol -->
+      <!-- begin::Description -->
+      <div class="d-flex align-items-center flex-wrap w-100">
+        <!-- begin::Title -->
+        <div class="mb-1 pe-3 flex-grow-1">
+          <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
+            HarshCornering
+          </a>
+          <div class="text-gray-400 fw-bold fs-7"></div>
+        </div>
+        <!-- end::Title -->
+        <!-- begin::Label -->
+        <div class="d-flex align-items-center">
+          <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ kpi.HarshCornering }}</div>
+          <span
+            [inlineSVG]="'./assets/media/icons/duotune/arrows/arr066.svg'"
+            class="svg-icon svg-icon-5 svg-icon-danger ms-1"
+          ></span>
+        </div>
+        <!-- end::Label -->
+      </div>
+      <!-- end::Description -->
+    </div>
+    <!-- end::Item -->
+    <!-- begin::Item -->
+    <div class="d-flex align-items-center mb-6" *ngFor="let kpi of driverKPIs; let i = index">
       <!-- begin::Symbol -->
       <div class="symbol symbol-45px w-40px me-5">
         <span class="symbol-label bg-lighten">
@@ -138,51 +284,16 @@
         <!-- begin::Title -->
         <div class="mb-1 pe-3 flex-grow-1">
           <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
-            Growth
+            NightDriving
           </a>
-          <div class="text-gray-400 fw-bold fs-7">80% Rate</div>
+          <div class="text-gray-400 fw-bold fs-7"></div>
         </div>
         <!-- end::Title -->
         <!-- begin::Label -->
         <div class="d-flex align-items-center">
-          <div class="fw-bolder fs-5 text-gray-800 pe-1">$8,8m</div>
+          <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ kpi.NightDriving }}</div>
           <span
             [inlineSVG]="'./assets/media/icons/duotune/arrows/arr066.svg'"
-            class="svg-icon svg-icon-5 svg-icon-success ms-1"
-          ></span>
-        </div>
-        <!-- end::Label -->
-      </div>
-      <!-- end::Description -->
-    </div>
-    <!-- end::Item -->
-    <!-- begin::Item -->
-    <div class="d-flex align-items-center">
-      <!-- begin::Symbol -->
-      <div class="symbol symbol-45px w-40px me-5">
-        <span class="symbol-label bg-lighten">
-          <span
-            [inlineSVG]="'./assets/media/icons/duotune/general/gen005.svg'"
-            class="svg-icon svg-icon-1"
-          ></span>
-        </span>
-      </div>
-      <!-- end::Symbol -->
-      <!-- begin::Description -->
-      <div class="d-flex align-items-center flex-wrap w-100">
-        <!-- begin::Title -->
-        <div class="mb-1 pe-3 flex-grow-1">
-          <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
-            Dispute
-          </a>
-          <div class="text-gray-400 fw-bold fs-7">3090 Refunds</div>
-        </div>
-        <!-- end::Title -->
-        <!-- begin::Label -->
-        <div class="d-flex align-items-center">
-          <div class="fw-bolder fs-5 text-gray-800 pe-1">$270m</div>
-          <span
-            [inlineSVG]="'./assets/media/icons/duotune/arrows/arr065.svg'"
             class="svg-icon svg-icon-5 svg-icon-danger ms-1"
           ></span>
         </div>
@@ -191,6 +302,16 @@
       <!-- end::Description -->
     </div>
     <!-- end::Item -->
+
+    <!-- ... Répétez le modèle d'Item pour d'autres KPIs ... -->
+
   </div>
   <!-- end::Items -->
 </div>
+
+
+
+
+
+
+ 

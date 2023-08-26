@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getCSSVariableValue } from '../../../../../kt/_utils';
+import { CardService } from 'src/app/pages/cards/cards.service';
 
 @Component({
   selector: 'app-charts-widget1',
@@ -7,34 +8,43 @@ import { getCSSVariableValue } from '../../../../../kt/_utils';
 })
 export class ChartsWidget1Component implements OnInit {
   chartOptions: any = {};
-  constructor() {}
+
+  constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
-    this.chartOptions = getChartOptions(350);
+    this.cardService.getCarStats().subscribe(
+      carStats => {
+        this.chartOptions = getChartOptions(carStats);
+      },
+      error => {
+        console.error('Erreur lors de la récupération des statistiques de voitures :', error);
+      }
+    );
   }
 }
 
-function getChartOptions(height: number) {
+function getChartOptions(carStats: any[]) {
   const labelColor = getCSSVariableValue('--bs-gray-500');
   const borderColor = getCSSVariableValue('--bs-gray-200');
   const baseColor = getCSSVariableValue('--bs-primary');
   const secondaryColor = getCSSVariableValue('--bs-gray-300');
 
+  // Extract brand names and totalCars from carStats
+  const categories = carStats.map(item => item._id);
+  const data = carStats.map(item => item.totalCars);
+
   return {
     series: [
       {
-        name: 'Net Profit',
-        data: [44, 55, 57, 56, 61, 58],
-      },
-      {
-        name: 'Revenue',
-        data: [76, 85, 101, 98, 87, 105],
-      },
+        name: 'Nombre de véhicules assurés',
+        data: data,
+      }
     ],
+
     chart: {
       fontFamily: 'inherit',
       type: 'bar',
-      height: height,
+      height: 350,
       toolbar: {
         show: false,
       },
@@ -42,7 +52,7 @@ function getChartOptions(height: number) {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '30%',
+        columnWidth: '12%',
         borderRadius: 5,
       },
     },
@@ -58,7 +68,7 @@ function getChartOptions(height: number) {
       colors: ['transparent'],
     },
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      categories: categories,
       axisBorder: {
         show: false,
       },
@@ -70,6 +80,9 @@ function getChartOptions(height: number) {
           colors: labelColor,
           fontSize: '12px',
         },
+        formatter: function (value: any) {
+          return value.toLocaleString('fr-FR', { minimumFractionDigits: 0 });
+        }
       },
     },
     yaxis: {

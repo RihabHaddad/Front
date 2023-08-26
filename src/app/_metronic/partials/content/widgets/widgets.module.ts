@@ -103,6 +103,8 @@ import { FormsModule } from '@angular/forms';
     MixedWidget6Component,
     MixedWidget10Component,
     MixedWidget11Component,
+    MixedWidget7Component,
+
     // Tiles,
     TilesWidget1Component,
     TilesWidget3Component,

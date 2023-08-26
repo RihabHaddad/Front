@@ -7,4 +7,5 @@ export class AssureModel {
     phoneNumber: string;
     cin: string;
     drivingLicense: string;
+    Registrations:string[];
   }

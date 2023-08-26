@@ -43,4 +43,7 @@ export class UserService {
     return this.http.get('/api/Admins/RetreiveDistance/'+_id);
   }
   
+  getTotalUsers(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/calculateTotalUsers`);
+  }
 }

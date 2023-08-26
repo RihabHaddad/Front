@@ -9,7 +9,7 @@ import { Card } from './card.model';
 })
 export class CardService {
   private apiUrl = 'http://localhost:8002/api/car'; // Replace with your API endpoint
-
+  private apiUrll = 'http://localhost:8002'; 
   constructor(private http: HttpClient) { }
 
   // Create a new card
@@ -35,5 +35,8 @@ export class CardService {
   // Delete a card by ID
   deleteCard(_id: string): Observable<Card> {
     return this.http.delete<Card>(`${this.apiUrl}/deletecar/${_id}`);
+  }
+  getCarStats(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrll}/calculateCarsByBrand`);
   }
 }
