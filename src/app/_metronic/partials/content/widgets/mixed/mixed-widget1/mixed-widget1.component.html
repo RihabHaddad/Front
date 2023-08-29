@@ -9,7 +9,7 @@
     <!-- begin::Heading -->
     <div class="d-flex flex-stack">
       <h3 class="m-0 text-white fw-bolder fs-3">Driver Behavior KPIS</h3>
-      <div class="ms-1">
+       <div class="ms-1">
         <!-- begin::Menu -->
         <button
           type="button"
@@ -92,7 +92,7 @@
         </div>
         <!-- end::Description -->
         <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
-          {{ kpi.meanSpeed_classification }}
+          {{ data[0]?.meanSpeed_classification }}     
   
         </a>
         <div class="text-gray-400 fw-bold fs-7"></div> </div>
@@ -134,8 +134,8 @@
         </div>
         <!-- end::Description -->
         <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
-          {{ kpi.maxSpeed_classification }}
-  
+          
+          {{ data[0]?.maxSpeed_classification }}     
         </a>
         <div class="text-gray-400 fw-bold fs-7"></div> </div>
       </div>
@@ -176,7 +176,7 @@
         </div>
         <!-- end::Description -->
         <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
-          {{ kpi.stdSpeed_classification }}
+          {{ data[0]?.stdSpeed_classification }}
   
         </a>
         <div class="text-gray-400 fw-bold fs-7"></div> </div>
@@ -218,7 +218,7 @@
         </div>
         <!-- end::Description -->
         <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
-          {{ kpi.HarshAcceleration_classification}}
+          {{ data[0]?.HarshAcceleration_classification}}
   
         </a>
         <div class="text-gray-400 fw-bold fs-7"></div> </div>
@@ -260,7 +260,7 @@
         <!-- end::Description -->
         <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
           
-          {{ kpi.HarshBraking_classification}}
+          {{ data[0]?.HarshBraking_classification}}
         </a>
         <div class="text-gray-400 fw-bold fs-7"></div> </div>
       </div>
@@ -302,7 +302,7 @@
         <!-- end::Description -->
         <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder">
           
-          {{ kpi.HarshCornering_classification}}
+          {{ data[0]?.HarshCornering_classification}}
         </a>
         <div class="text-gray-400 fw-bold fs-7"></div> </div>
       </div>
