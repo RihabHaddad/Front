@@ -11,7 +11,8 @@ import { UpdateCardComponent } from './update-card/update-card.component';
 import { DriverBehaviorComponent } from './driver-behavior/driver-behavior.component';
 import { SignInMethodComponent } from '../modules/account/settings/forms/sign-in-method/sign-in-method.component';
 import { ResetPasswordComponent } from '../modules/auth/components/reset-password/reset-password.component';
-import { DistanceComponent } from './distance/distance.component';
+import { AccidentComponent } from './accident/accident.component';
+
 
 const Routing: Routes = [
   {
@@ -84,8 +85,9 @@ const Routing: Routes = [
   path: 'DriverBehavior',
   component: DriverBehaviorComponent ,},
   {
-    path: 'Distance',
-    component: DistanceComponent ,},
+  path: 'A',
+  component: AccidentComponent ,},
+  
     
   
 ];

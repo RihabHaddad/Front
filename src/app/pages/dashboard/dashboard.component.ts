@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import { UserService } from '../user.service';
 import { Subscription } from 'rxjs';
 import { SseService } from '../driver-behavior/SseService';
+import { DataService } from './DataService';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,11 +12,12 @@ import { SseService } from '../driver-behavior/SseService';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  data: string;
   totalUsers: number | undefined;
   notifications: any[] = [];
-  driverId = '12'; // Replace with the desired driverId
+  driverId = '27'; // Replace with the desired driverId
   sseSubscription: Subscription;
-  constructor(private userService: UserService,private sseService: SseService) {this.initSse();}
+  constructor(private dataService: DataService ,private userService: UserService,private sseService: SseService) {this.initSse();}
   chartOptions: any = {};
   totalAssures = 0;
   chart: Chart;
@@ -35,7 +37,17 @@ export class DashboardComponent implements OnInit {
     this.sseSubscription.unsubscribe();
   }
 
-  ngOnInit(): void {    this.chartOptions = getChartOptions(350); this.userService.getTotalUsers().subscribe(
+  ngOnInit(): void {   
+    this.dataService.getDataFromSpark().subscribe(
+      (response: any) => {
+        this.data = response;
+      },
+      error => {
+        console.error('Erreur lors de la récupération des données:', error);
+      }
+    );
+  
+    this.chartOptions = getChartOptions(350); this.userService.getTotalUsers().subscribe(
     response => {
       this.totalUsers = response.totalUsers;
     },
@@ -44,6 +56,7 @@ export class DashboardComponent implements OnInit {
     }
   );
 }
+
   }
 
   function getChartOptions(height: number) {

@@ -26,28 +26,25 @@
     <div>
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Notifications</mat-card-title>
-        </mat-card-header>
+          <h5 class="fw-bold mb-0">Notifcations </h5>        </mat-card-header>
         <mat-card-content>
           <mat-list>
             <mat-list-item *ngFor="let notification of notifications">
               <div class="notification">
-                <h3>Driver {{ notification.driverId }}</h3>
-                <p>Exceeded the speed limit with a speed of {{ notification.speed }} km/h</p>
+                <div class="attention-icon">❗</div>
+                <div class="notification-content">
+                  <h3>Driver {{ notification.driverId }}</h3>
+                  <p>Exceeded the speed limit with a speed of {{ notification.speed }} km/h</p>
+                </div>
               </div>
             </mat-list-item>
           </mat-list>
         </mat-card-content>
       </mat-card>
       
+      
     </div>
-    <div class="col-xl-4">
-      <app-mixed-widget11
-        class="card card-xl-stretch mb-xl-8"
-        chartColor="info"
-        chartHeight="200px"
-      ></app-mixed-widget11>
-    </div>
+    
   </div>
   
  <style>
@@ -58,13 +55,28 @@
   margin-bottom: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  display: flex; /* Added to align icon and content */
 }
 
 .notification:hover {
   background-color: #f0f0f0;
 }
 
-  .animated-icon {
+.attention-icon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #ff6f00; /* Change color to your preference */
+}
+
+.notification-content {
+  flex: 1; /* Added to make content expand */
+}
+
+.notification h3,
+.notification p {
+  font-weight: bold;
+}
+ .animated-icon {
   animation: bounce 1.5s infinite;
 }
 

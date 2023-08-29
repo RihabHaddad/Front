@@ -1,1 +1,13 @@
-<p>accident works!</p>
+<a href="#" class="fw-bolder text-dark fs-4 mb-2 text-hover-primary">
+      <div *ngIf="data$ | async as data; else loading">
+        <!-- Use the data from the Observable here -->
+        <div *ngFor="let driver of data; trackBy: trackByDriverId">
+          <p>Driver ID: {{ driver.DriverId }}</p>
+          <p>Mean Speed: {{ driver.MeanSpeed }}</p>
+          <!-- Display other properties as needed -->
+        </div>
+      </div>
+      <ng-template #loading>Loading data...</ng-template>
+      
+      
+    </a>

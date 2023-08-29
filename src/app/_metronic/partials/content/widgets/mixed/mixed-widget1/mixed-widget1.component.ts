@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { KpiService } from 'src/app/pages/driver-behavior/KpiService';
 
 @Component({
@@ -9,8 +10,9 @@ export class MixedWidget1Component {
   @Input() color: string = '';
   driverId = '1'; // ID du driver que vous souhaitez afficher
   driverKPIs: any[] = []; // Tableau pour stocker les KPI du driver
-
-  constructor(private kpiService: KpiService) {}
+  data: any[] = [];
+  private dataSubscription: Subscription;
+  constructor(private kpiService: KpiService,) {}
 
   ngOnInit(): void {
     this.loadDriverKPIs();

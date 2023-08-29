@@ -52,6 +52,7 @@ function appInitializer(authService: AuthService) {
     HttpClientModule,
     ClipboardModule,
     FormsModule, // Add FormsModule here7
+    
    
 
    
