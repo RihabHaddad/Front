@@ -12,6 +12,7 @@ import { DriverBehaviorComponent } from './driver-behavior/driver-behavior.compo
 import { SignInMethodComponent } from '../modules/account/settings/forms/sign-in-method/sign-in-method.component';
 import { ResetPasswordComponent } from '../modules/auth/components/reset-password/reset-password.component';
 import { AccidentComponent } from './accident/accident.component';
+import { DistancetravelledComponent } from './distancetravelled/distancetravelled.component';
 
 
 const Routing: Routes = [
@@ -87,6 +88,10 @@ const Routing: Routes = [
   {
   path: 'A',
   component: AccidentComponent ,},
+
+  {
+  path: 'Distance',
+  component: DistancetravelledComponent ,},
   
     
   

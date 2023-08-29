@@ -31,6 +31,7 @@ import { StatisticsComponent } from './modules/widgets-examples/statistics/stati
 import { ListsComponent } from './modules/widgets-examples/lists/lists.component';
 import { WidgetsExamplesComponent } from './modules/widgets-examples/widgets-examples.component';
 import { DriverBehaviorModule } from './pages/driver-behavior/driver-behavior.module';
+import { DistancetravelledComponent } from './pages/distancetravelled/distancetravelled.component';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
