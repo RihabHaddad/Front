@@ -13,6 +13,7 @@ import { SignInMethodComponent } from '../modules/account/settings/forms/sign-in
 import { ResetPasswordComponent } from '../modules/auth/components/reset-password/reset-password.component';
 import { AccidentComponent } from './accident/accident.component';
 import { DistancetravelledComponent } from './distancetravelled/distancetravelled.component';
+import { EcodrivingComponent } from './ecodriving/ecodriving.component';
 
 
 const Routing: Routes = [
@@ -92,6 +93,10 @@ const Routing: Routes = [
   {
   path: 'Distance',
   component: DistancetravelledComponent ,},
+
+  {
+    path: 'Eco Driving',
+    component: EcodrivingComponent ,},
   
     
   

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+  }
+  .kpi-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  .kpi-title {
+    font-family: Arial;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  .kpi {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .icon {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-right: 15px;
+  }
+  .kpi-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3498db;
+  }
+  .kpi-label {
+    font-size: 1.3rem;
+    color: #2a2a2a;
+    margin-top: 2px;
+  }
+</style>
+<title>Éco-Conduite KPIs</title>
+</head>
+<body>
+<div class="kpi-container" *ngFor="let kpi of driverKPIs; let i = index">
+  <h2 class="kpi-title">Eco Driving KPIs</h2>
+  <div class="kpi">
+    <i class="icon fas fa-car"></i>
+    <div>
+      <div class="kpi-label">Idling</div>
+      <div class="kpi-value">{{ kpi.Idling }}</div>
+    </div>
+  </div>
+  <div class="kpi">
+    <i class="icon fas fa-road"></i>
+    <div>
+      <div class="kpi-label">High RPM</div>
+      <div class="kpi-value">{{ kpi.HighRPM }}</div>
+    </div>
+  </div>
+  <div class="kpi">
+    <i class="icon fas fa-gas-pump"></i>
+    <div>
+      <div class="kpi-label">Fuel Consumption</div>
+      <div class="kpi-value">{{ kpi.FuelConsumption }}</div>
+    </div>
+  </div>
+  <div class="kpi">
+    <i class="icon fas fa-tachometer-alt"></i>
+    <div>
+      <div class="kpi-label">GearShiftUp</div>
+      <div class="kpi-value">{{ kpi.GearShiftUp }}</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

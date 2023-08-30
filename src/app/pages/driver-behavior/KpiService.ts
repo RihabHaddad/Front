@@ -17,5 +17,8 @@ export class KpiService {
   getLatestSpeedData() {
     return this.http.get<any>('http://localhost:8002/latest_speed_data'); // Remplacez l'URL par votre endpoint
   }
-
+  getecoKPIs(driverId: string): Observable<any> {
+    const url = `${this.baseUrl}/ecodrivingkpis/${driverId}`;
+    return this.http.get(url);
+  }
 }
