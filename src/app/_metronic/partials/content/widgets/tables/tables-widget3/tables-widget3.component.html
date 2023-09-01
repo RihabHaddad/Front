@@ -1,7 +1,7 @@
 <!-- begin::Header -->
 <div class="card-header border-0 pt-5">
   <h3 class="card-title align-items-start flex-column">
-    <span class="card-label fw-bolder fs-3 mb-1">Files</span>
+    <span class="card-label fw-bolder fs-3 mb-1">Eco Driving KPIS</span>
     <span class="text-muted mt-1 fw-bold fs-7">Over 100 pending files</span>
   </h3>
 
@@ -25,6 +25,8 @@
 </div>
 <!-- end::Header -->
 <!-- begin::Body -->
+
+
 <div class="card-body py-3">
   <!-- begin::Table container -->
   <div class="table-responsive">
@@ -42,8 +44,8 @@
       </thead>
       <!-- end::Table head -->
       <!-- begin::Table body -->
-      <tbody>
-        <tr>
+      <tbody >
+        <tr *ngFor="let kpi of driverKPIs; let i = index">
           <td>
             <div class="symbol symbol-50px me-2">
               <span class="symbol-label bg-light-success">
@@ -56,19 +58,18 @@
               </span>
             </div>
           </td>
-          <td>
+          <td >
             <a
               href="#"
               class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
             >
-              Top Authors
+              Idling
             </a>
           </td>
-          <td class="text-end text-muted fw-bold">ReactJs, HTML</td>
-          <td class="text-end text-muted fw-bold">4600 Users</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">5.4MB</td>
+          <td class="text-end text-muted fw-bold">{{kpi.idling}}</td>
+          <td class="text-end text-dark fw-bolder fs-6 pe-0">{{ data[0]?.idling_classification }} </td>
         </tr>
-        <tr>
+        <tr *ngFor="let kpi of driverKPIs; let i = index">
           <td>
             <div class="symbol symbol-50px me-2">
               <span class="symbol-label bg-light-danger">
@@ -86,14 +87,16 @@
               href="#"
               class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
             >
-              Popular Authors
+            
+highRPM
+
             </a>
           </td>
-          <td class="text-end text-muted fw-bold">Python, MySQL</td>
-          <td class="text-end text-muted fw-bold">7200 Users</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">2.8MB</td>
+          <td class="text-end text-muted fw-bold">{{kpi.
+            highRPM}}</td>
+          <td class="text-end text-dark fw-bolder fs-6 pe-0">{{ data[0]?.highRPM_classification }}</td>
         </tr>
-        <tr>
+        <tr *ngFor="let kpi of driverKPIs; let i = index">
           <td>
             <div class="symbol symbol-50px me-2">
               <span class="symbol-label bg-light-info">
@@ -111,14 +114,13 @@
               href="#"
               class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
             >
-              New Users
+              Fuel Consumption
             </a>
           </td>
-          <td class="text-end text-muted fw-bold">Laravel, Metronic</td>
-          <td class="text-end text-muted fw-bold">890 Users</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">1.5MB</td>
+          <td class="text-end text-muted fw-bold">{{kpi.FuelConsumption}}</td>
+          <td class="text-end text-dark fw-bolder fs-6 pe-0">{{ data[0]?.FuelConsumption_classification }}</td>
         </tr>
-        <tr>
+        <tr *ngFor="let kpi of driverKPIs; let i = index">
           <td>
             <div class="symbol symbol-50px me-2">
               <span class="symbol-label bg-light-warning"
@@ -136,38 +138,15 @@
               href="#"
               class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
             >
-              Active Customers
+            GearShiftUp
+
             </a>
           </td>
-          <td class="text-end text-muted fw-bold">AngularJS, C#</td>
-          <td class="text-end text-muted fw-bold">4600 Users</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">5.4MB</td>
+          <td class="text-end text-muted fw-bold">{{kpi.GearShiftUp
+          }}</td>
+          <td class="text-end text-dark fw-bolder fs-6 pe-0">{{ data[0]?.GearShiftUp_classification }}</td>
         </tr>
-        <tr>
-          <td>
-            <div class="symbol symbol-50px me-2">
-              <span class="symbol-label bg-light-primary">
-                <span
-                  [inlineSVG]="
-                    './assets/media/icons/duotune/abstract/abs042.svg'
-                  "
-                  class="svg-icon svg-icon-2x svg-icon-primary"
-                ></span>
-              </span>
-            </div>
-          </td>
-          <td>
-            <a
-              href="#"
-              class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-            >
-              Active Customers
-            </a>
-          </td>
-          <td class="text-end text-muted fw-bold">ReactJS, Ruby</td>
-          <td class="text-end text-muted fw-bold">354 Users</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">500KB</td>
-        </tr>
+       
       </tbody>
       <!-- end::Table body -->
     </table>

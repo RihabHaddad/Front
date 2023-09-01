@@ -10,6 +10,7 @@ import { UserService } from 'src/app/pages/user.service';
 })
 export class ProfileDetailsComponent {
   _id:string;
+  DriverId:string;
   username: string;
   email: string;
   password: string;
@@ -29,6 +30,7 @@ export class ProfileDetailsComponent {
     // Créez un nouvel utilisateur avec les valeurs du formulaire
     const newAssure: AssureModel = {
       _id:this._id,
+      DriverId:this.DriverId,
       username: this.username,
       firstName: this.firstName,
       lastName: this.lastName,
@@ -36,7 +38,7 @@ export class ProfileDetailsComponent {
       phoneNumber: this.phoneNumber,
       cin: this.cin,
       drivingLicense: this.drivingLicense,
-      Registrations: this.Registrations
+      registrationCards: this.Registrations
     };
   
     
@@ -46,6 +48,7 @@ export class ProfileDetailsComponent {
       () => {
         // Réinitialisez les valeurs du formulaire et l'indicateur de chargement
         this._id = '';
+        this.DriverId = '';
         this.username = '';
         this.firstName = '';
         this.lastName = '';

@@ -13,4 +13,13 @@ export class DataService {
     const apiUrl = 'http://192.168.136.4:5000/api/data';
     return this.http.get<any[]>(apiUrl);
   }
+  getDataFromSpark2(): Observable<any[]> {
+    const apiUrl = 'http://192.168.136.4:5001/api/data/eco';
+    return this.http.get<any[]>(apiUrl);
+  }
+  getDistanceAndTime(): Observable<any> {
+    const apiUrl ='http://localhost:8002/api/distance/1';
+    return this.http.get<any>(apiUrl);
+  }
+
 }

@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+// distancetravelled.component.ts
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Distance } from './Distancemodel';
 import { DistanceService } from './DistanceService';
+import { DataService } from '../dashboard/DataService';
 
 @Component({
   selector: 'app-distancetravelled',
@@ -16,22 +18,23 @@ export class DistancetravelledComponent implements OnInit {
   @Input() distance: number = 0; //
   distanceData: Distance;
 
-  
-    constructor(private distanceService: DistanceService) {}
-  
-    ngOnInit(): void {
-      this.distanceService.getDistanceForDriverId1().subscribe(data => {
-        this.distanceData = data;
-      });
-    }
+  @ViewChild('lineChartCanvas', { static: true }) lineChartCanvas: ElementRef;
+
+  lineChartData: any = {
+    labels: [],
+    datasets: [{
+      label: 'Distance',
+     
+    }]
+  };
+
+
+  constructor(private distanceService: DistanceService,private dataService: DataService) {}
+
+  ngOnInit(): void {
+    
+    this.distanceService.getDistanceForDriverId1().subscribe(data => {
+      this.distanceData = data;
+    });
   }
-  
-  
-  
-  
-  
-  
-  
-
-
-
+}

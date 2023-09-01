@@ -7,16 +7,20 @@ import { WidgetsExamplesModule } from "src/app/modules/widgets-examples/widgets-
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { WidgetsModule } from "src/app/_metronic/partials";
+import { DistancetravelledComponent } from "../distancetravelled/distancetravelled.component";
+import { LineChartModule } from "../line-chart/line-chart.module";
 
 @NgModule({
   declarations: [
     DriverBehaviorComponent,
-    
+    DistancetravelledComponent,
   ],
   imports: [
     CommonModule,
     WidgetsExamplesModule,
-    WidgetsModule 
+    WidgetsModule,
+    LineChartModule
+ 
   ],
 })
 export class DriverBehaviorModule {}

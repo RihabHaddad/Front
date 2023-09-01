@@ -42,7 +42,7 @@ export class CardsComponent implements OnInit {
       ClassBonus: 'A',
       Marque: 'Toyota',
       Puissance: '120hp',
-      NbrePlace: '5'
+      NbrePlace: '5',
     };
 
     this.cardService.createCard(newCard).subscribe(

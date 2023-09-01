@@ -15,7 +15,17 @@ export class DriverBehaviorComponent implements OnInit {
   @Input() change = '';
   @ViewChild('chartRef', { static: true }) chartRef: ElementRef;
   height: number;
+  @ViewChild('lineChartCanvas', { static: true }) lineChartCanvas: ElementRef;
 
+  lineChartData: any = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [{
+      label: 'Series A',
+      data: [65, 59, 80, 81, 56, 55, 40],
+      borderColor: 'rgba(75,192,192,1)',
+      fill: false,
+    }]
+  };
   chartOptions: any = {};
   labelColor: string;
   baseColor: string;

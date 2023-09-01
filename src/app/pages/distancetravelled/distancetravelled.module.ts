@@ -5,17 +5,19 @@ import { WidgetsExamplesComponent } from 'src/app/modules/widgets-examples/widge
 import { WidgetsModule } from 'src/app/_metronic/partials';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { LineChartComponent } from '../linechart/linechart.component';
+import { DistancetravelledComponent } from './distancetravelled.component';
 
 
 
 @NgModule({
-  declarations: [ StatsWidget5Component,],
+  declarations: [ StatsWidget5Component,DistancetravelledComponent],
   imports: [
     CommonModule,
     WidgetsExamplesComponent,
     MatIconModule,
     MatCardModule, // Ajout du module MatCardModule
-
+LineChartComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   

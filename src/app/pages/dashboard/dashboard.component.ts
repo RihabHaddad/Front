@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   data: string;
   totalUsers: number | undefined;
   notifications: any[] = [];
-  driverId = '2'; // Replace with the desired driverId
+  driverId = '0'; // Replace with the desired driverId
   sseSubscription: Subscription;
   constructor(private dataService: DataService ,private userService: UserService,private sseService: SseService) {this.initSse();}
   chartOptions: any = {};

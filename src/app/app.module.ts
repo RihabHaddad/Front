@@ -1,5 +1,5 @@
 
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,6 +33,8 @@ import { WidgetsExamplesComponent } from './modules/widgets-examples/widgets-exa
 import { DriverBehaviorModule } from './pages/driver-behavior/driver-behavior.module';
 import { DistancetravelledComponent } from './pages/distancetravelled/distancetravelled.component';
 import { EcodrivingComponent } from './pages/ecodriving/ecodriving.component';
+import { LineChartComponent } from './pages/linechart/linechart.component';
+import { LineChartModule } from './pages/line-chart/line-chart.module';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -54,6 +56,7 @@ function appInitializer(authService: AuthService) {
     HttpClientModule,
     ClipboardModule,
     FormsModule, // Add FormsModule here7
+    LineChartModule,
     
    
 
@@ -71,7 +74,9 @@ function appInitializer(authService: AuthService) {
     InlineSVGModule.forRoot(),
     NgbModule,
     
+    
   ],
+  
   providers: [
     {
       provide: APP_INITIALIZER,
@@ -81,5 +86,6 @@ function appInitializer(authService: AuthService) {
     },
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

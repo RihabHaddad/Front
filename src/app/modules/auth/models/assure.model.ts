@@ -1,5 +1,8 @@
+import { Card } from "src/app/pages/cards/card.model";
+
 export class AssureModel {
    _id: string;
+    DriverId: string;
     username: string;
     firstName: string;
     lastName: string;
@@ -7,5 +10,5 @@ export class AssureModel {
     phoneNumber: string;
     cin: string;
     drivingLicense: string;
-    Registrations:string[];
+    registrationCards: Card[];
   }

@@ -23,6 +23,7 @@ export class AddCardComponent implements OnInit {
     Marque: '',
     Puissance: '',
     NbrePlace: '',
+
   };
 
   constructor(private cardService: CardService) { }

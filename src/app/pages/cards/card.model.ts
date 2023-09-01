@@ -12,5 +12,7 @@ export class Card {
     Marque: string;
     Puissance: string;
     NbrePlace: string;
+    
+
   }
   

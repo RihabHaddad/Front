@@ -1,82 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 20px;
-  }
-  .kpi-container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  .kpi-title {
-    font-family: Arial;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #333;
-  }
-  .kpi {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  .icon {
-    font-size: 2.5rem;
-    color: #3498db;
-    margin-right: 15px;
-  }
-  .kpi-value {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #3498db;
-  }
-  .kpi-label {
-    font-size: 1.3rem;
-    color: #2a2a2a;
-    margin-top: 2px;
-  }
-</style>
-<title>Éco-Conduite KPIs</title>
-</head>
-<body>
-<div class="kpi-container" *ngFor="let kpi of driverKPIs; let i = index">
-  <h2 class="kpi-title">Eco Driving KPIs</h2>
-  <div class="kpi">
-    <i class="icon fas fa-car"></i>
-    <div>
-      <div class="kpi-label">Idling</div>
-      <div class="kpi-value">{{ kpi.Idling }}</div>
+<div class="row ">
+  <div class="col-xl-6">
+    <app-charts-widget3 class="card card-xl-stretch mb-xl-8">
+    </app-charts-widget3>
+  </div>
+  
+  <div class="col-xl-4">
+      <app-stats-widget2
+        class="card card-xl-stretch mb-5 mb-xl-8"
+        avatar="./assets/media/svg/avatars/004-boy-1.svg"
+        title="Nick Stone"
+        description="Customer Support Team"
+      ></app-stats-widget2>
     </div>
   </div>
-  <div class="kpi">
-    <i class="icon fas fa-road"></i>
-    <div>
-      <div class="kpi-label">High RPM</div>
-      <div class="kpi-value">{{ kpi.HighRPM }}</div>
-    </div>
+  
+  <div class="col-xl-10">
+    <app-mixed-widget1
+      class="card card-xl-stretch mb-xl-8"
+      color="primary"
+    ></app-mixed-widget1>
   </div>
-  <div class="kpi">
-    <i class="icon fas fa-gas-pump"></i>
-    <div>
-      <div class="kpi-label">Fuel Consumption</div>
-      <div class="kpi-value">{{ kpi.FuelConsumption }}</div>
-    </div>
-  </div>
-  <div class="kpi">
-    <i class="icon fas fa-tachometer-alt"></i>
-    <div>
-      <div class="kpi-label">GearShiftUp</div>
-      <div class="kpi-value">{{ kpi.GearShiftUp }}</div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
+  
+  
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Inclure la bibliothèque Gauge.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.4.0/justgage.min.js"></script>
+    <title>Jauge de Vitesse</title>
+  </head>
+  <body>
+    <!-- Créer un conteneur pour la jauge -->
+    <div id="speedGauge"></div>
+  
+    <script>
+      // Créer et configurer la jauge
+      var speedGauge = new JustGage({
+        id: "speedGauge",
+        value: 0, // Valeur initiale de la vitesse (peut être mise à jour en temps réel)
+        min: 0,   // Valeur minimale de la jauge
+        max: 120, // Valeur maximale de la jauge (ajustez selon vos besoins)
+        title: "Vitesse en km/h", // Titre de la jauge
+        label: "km/h", // Étiquette de l'unité de mesure
+        gaugeWidthScale: 0.6, // Largeur de la jauge (entre 0 et 1)
+        counter: true, // Afficher un compteur de vitesse
+      });
+  
+      // Mettre à jour la valeur de la jauge en temps réel (simulé ici)
+      setInterval(function() {
+        var randomSpeed = Math.floor(Math.random() * 120); // Générer une vitesse aléatoire
+        speedGauge.refresh(randomSpeed); // Mettre à jour la valeur de la jauge
+      }, 2000); // Mettre à jour toutes les 2 secondes (ajustez selon vos besoins)
+    </script>
+  </body>
+  </html>
+  
+  
+  
+  

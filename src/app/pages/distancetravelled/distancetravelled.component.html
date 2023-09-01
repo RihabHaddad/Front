@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #3498db;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 50vh; /* Réduire la hauteur minimale */
-  }
-  .distance-container {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  .distance {
-    font-size: 3rem;
-    color: #333;
-    transition: color 0.5s, font-size 0.5s;
-  }
-  .distance:hover {
-    color: #e74c3c;
-    font-size: 4rem;
-  }
-  .icon {
-    font-size: 2rem;
-    margin-right: 10px;
-  }
-</style>
-<title>Distance Animée</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+   
+    .distance-container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .distance {
+      font-size: 2rem;
+      color: #333;
+      transition: color 0.5s, font-size 0.5s;
+    }
+    .distance:hover {
+      color: #e74c3c;
+      font-size: 4rem;
+    }
+    .icon {
+      font-size: 2rem;
+      margin-right: 10px;
+    }
+  </style>
+  <title>Distance Animée</title>
 </head>
 <body>
-<div class="distance-container">
-    <p>Distance jusqu'à votre destination:</p>
-  <span class="distance">
-    {{ distanceData }} km </span>
-  <i class="icon fas fa-map-marker-alt"></i>
-</div>
+  <div class="row g-5 g-xl-8">
+    <div class="col-xl-6">
+      <div class="card card-xl-stretch mb-xl-8">
+        <h3 class="card-title align-items-start flex-column">
+          <span class="card-label fw-bolder fs-3 mb-1">Real Time Distance</span> 
+          
+        </h3>
+        <app-line-chart [chartData]="lineChartData"></app-line-chart>
+      </div>
+    </div>
+    <div class="col-xl-6">
+      <div class="card card-xl-stretch mb-xl-8">
+        <div class="blue-container">
+          <div class="distance-container">
+            <h3 class="card-label fw-bolder fs-3 mb-1">Distance totale</h3>
+            <p class="distance">
+              {{ distanceData }} km 
+            </p>
+            <i class="icon fas fa-map-marker-alt"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
