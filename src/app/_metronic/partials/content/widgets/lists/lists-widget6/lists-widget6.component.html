@@ -33,9 +33,10 @@
     </span>
     <!-- end::Icon -->
     <!-- begin::Title -->
-    <div class="flex-grow-1 me-2">
+    <div class="flex-grow-1 me-2" *ngFor="let notification of notifications">
       <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-6">
-        Group lunch celebration
+        <h3>Driver {{ notification.driverId }}</h3>
+        <p>Exceeded the speed limit with a speed of {{ notification.speed }} km/h</p>
       </a>
       <span class="text-muted fw-bold d-block">Due in 2 Days</span>
     </div>

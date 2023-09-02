@@ -14,6 +14,7 @@ import { ResetPasswordComponent } from '../modules/auth/components/reset-passwor
 import { AccidentComponent } from './accident/accident.component';
 import { DistancetravelledComponent } from './distancetravelled/distancetravelled.component';
 import { EcodrivingComponent } from './ecodriving/ecodriving.component';
+import { DistanceComponent } from './distance/distance.component';
 
 
 const Routing: Routes = [
@@ -87,8 +88,8 @@ const Routing: Routes = [
   path: 'DriverBehavior',
   component: DriverBehaviorComponent ,},
   {
-  path: 'A',
-  component: AccidentComponent ,},
+  path: 'Dist',
+  component: DistanceComponent ,},
 
   {
   path: 'Distance',

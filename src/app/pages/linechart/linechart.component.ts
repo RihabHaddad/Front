@@ -36,7 +36,7 @@ export class LineChartComponent implements AfterViewInit, OnChanges {
         datasets: [{
           label: 'Distance',
           data: data.map(entry => entry.Distance),
-          borderColor: 'rgba(75,192,192,1)',
+          borderColor: 'rgba(153,50,204)',
           fill: false,
         }]
       };

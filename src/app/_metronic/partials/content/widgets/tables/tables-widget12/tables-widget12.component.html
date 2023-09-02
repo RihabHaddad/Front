@@ -36,7 +36,6 @@
         <tr class="fw-bolder text-muted bg-light" >
           <th class="ps-4 min-w-300px rounded-start">DriverId</th>
           <th class="min-w-125px">CIN</th>
-          <th class="min-w-125px">Voiture</th>
           <th class="min-w-200px">Driver Behavior</th>
           <th class="min-w-150px">Eco Driving</th>
           <th class="min-w-150px">Rating</th>
@@ -84,14 +83,16 @@
               ></span
             >
           </td>
-          <td *ngFor="let card of user.registrationCards">
+         
+          <td>
             <a
               href="#"
               class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
             >
-                     </a>
-                     {{ card.vehicleNumber }}
-            <span class="text-muted fw-bold text-muted d-block fs-7"></span>
+                       </a>
+            <span class="text-muted fw-bold text-muted d-block fs-7">
+              {{ data[0]?.Behavior }}
+            </span>
           </td>
           <td>
             <a
@@ -100,30 +101,21 @@
             >
                        </a>
             <span class="text-muted fw-bold text-muted d-block fs-7">
-            </span>
+            {{ data1[0]?.EcoDriving }} </span>
           </td>
-          <td></td>
          
           <td>
             <div class="rating">
-              <div class="rating-label me-2 checked">
-                <i class="bi bi-star-fill fs-5"></i>
-              </div>
-              <div class="rating-label me-2 checked">
-                <i class="bi bi-star-fill fs-5"></i>
-              </div>
-              <div class="rating-label me-2 checked">
-                <i class="bi bi-star-fill fs-5"></i>
-              </div>
-              <div class="rating-label me-2 checked">
-                <i class="bi bi-star-fill fs-5"></i>
-              </div>
-              <div class="rating-label me-2 checked">
-                <i class="bi bi-star-fill fs-5"></i>
-              </div>
+              <span class="star" [class.selected]="userRating >= 1" (click)="setRating(1)">★</span>
+              <span class="star" [class.selected]="userRating >= 2" (click)="setRating(2)">★</span>
+              <span class="star" [class.selected]="userRating >= 3" (click)="setRating(3)">★</span>
+              <span class="star" [class.selected]="userRating >= 4" (click)="setRating(4)">★</span>
+              <span class="star" [class.selected]="userRating >= 5" (click)="setRating(5)">★</span>
             </div>
+            
+           
             <span class="text-muted fw-bold text-muted d-block fs-7 mt-1">
-              Best Rated
+              <p>Votre note : <span>{{ userRating }}</span></p>
             </span>
           </td>
         </tr>
@@ -139,3 +131,16 @@
   <!-- end::Table container -->
 </div>
 <!-- begin::Body -->
+<style>
+  /* styles.css */
+.star {
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star.selected {
+  color: #ffac00; /* Couleur des étoiles sélectionnées */
+}
+
+</style>

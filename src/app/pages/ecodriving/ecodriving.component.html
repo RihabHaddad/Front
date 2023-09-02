@@ -1,64 +1,24 @@
-<div class="row ">
-  <div class="col-xl-6">
-    <app-charts-widget3 class="card card-xl-stretch mb-xl-8">
-    </app-charts-widget3>
-  </div>
+<!-- app.component.html -->
+<h1>Notation des assurés</h1>
+
+<div class="rating">
+  <span class="star" [class.selected]="userRating >= 1" (click)="setRating(1)">★</span>
+  <span class="star" [class.selected]="userRating >= 2" (click)="setRating(2)">★</span>
+  <span class="star" [class.selected]="userRating >= 3" (click)="setRating(3)">★</span>
+  <span class="star" [class.selected]="userRating >= 4" (click)="setRating(4)">★</span>
+  <span class="star" [class.selected]="userRating >= 5" (click)="setRating(5)">★</span>
+</div>
+
+<p>Votre note : <span>{{ userRating }}</span></p>
+
+<style>/* styles.css */
+  .star {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+  }
   
-  <div class="col-xl-4">
-      <app-stats-widget2
-        class="card card-xl-stretch mb-5 mb-xl-8"
-        avatar="./assets/media/svg/avatars/004-boy-1.svg"
-        title="Nick Stone"
-        description="Customer Support Team"
-      ></app-stats-widget2>
-    </div>
-  </div>
-  
-  <div class="col-xl-10">
-    <app-mixed-widget1
-      class="card card-xl-stretch mb-xl-8"
-      color="primary"
-    ></app-mixed-widget1>
-  </div>
-  
-  
-  
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Inclure la bibliothèque Gauge.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.4.0/justgage.min.js"></script>
-    <title>Jauge de Vitesse</title>
-  </head>
-  <body>
-    <!-- Créer un conteneur pour la jauge -->
-    <div id="speedGauge"></div>
-  
-    <script>
-      // Créer et configurer la jauge
-      var speedGauge = new JustGage({
-        id: "speedGauge",
-        value: 0, // Valeur initiale de la vitesse (peut être mise à jour en temps réel)
-        min: 0,   // Valeur minimale de la jauge
-        max: 120, // Valeur maximale de la jauge (ajustez selon vos besoins)
-        title: "Vitesse en km/h", // Titre de la jauge
-        label: "km/h", // Étiquette de l'unité de mesure
-        gaugeWidthScale: 0.6, // Largeur de la jauge (entre 0 et 1)
-        counter: true, // Afficher un compteur de vitesse
-      });
-  
-      // Mettre à jour la valeur de la jauge en temps réel (simulé ici)
-      setInterval(function() {
-        var randomSpeed = Math.floor(Math.random() * 120); // Générer une vitesse aléatoire
-        speedGauge.refresh(randomSpeed); // Mettre à jour la valeur de la jauge
-      }, 2000); // Mettre à jour toutes les 2 secondes (ajustez selon vos besoins)
-    </script>
-  </body>
-  </html>
-  
-  
-  
-  
+  .star.selected {
+    color: #ffac00; /* Couleur des étoiles sélectionnées */
+  }
+  </style>
