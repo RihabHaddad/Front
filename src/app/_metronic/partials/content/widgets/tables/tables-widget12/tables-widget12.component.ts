@@ -7,6 +7,7 @@ import { DataService } from 'src/app/pages/dashboard/DataService';
 import { UserService } from 'src/app/pages/user.service';
 import { RatingService } from './RatingService';
 
+
 @Component({
   selector: 'app-tables-widget12',
   templateUrl: './tables-widget12.component.html',
@@ -16,27 +17,48 @@ export class TablesWidget12Component implements OnInit {
   data: any[] = [];
   data1: any[] = [];
   users: AssureModel[] = [];
-   userRating: number = 0; 
+  userRatings: { [key: string]: number } = {};
+
   private dataSubscription: Subscription;
 
+  constructor(
+    private cardService: CardService,
+    private dataService: DataService,
+    private userService: UserService,
+    private ratingService: RatingService
+  ) {}
 
-  
-  constructor(private cardService:CardService,private dataService: DataService,private userService: UserService,private ratingService: RatingService) {}
-  ngOnInit(): void {    this.loadAllCards(); this.loadData(); this.loadAllusersCards() ;
+  ngOnInit(): void {
+    this.loadAllCards();
+    this.loadData();
+    this.loadAllUsersCards();
     this.loadData1();
   }
- 
 
-  setRating(rating: number) {
-    this.userRating = rating;
-    
-    // Envoie la note au serveur en utilisant le service
-    this.ratingService.sendRating(rating).subscribe(response => {
-      console.log('Note envoyée avec succès !', response);
-    }, error => {
-      console.error('Erreur lors de l\'envoi de la note :', error);
-    });
+  setRating(rating: number, userId: string) {
+    this.userRatings[userId] = rating;
+
+    // Send the rating to the server using the RatingService
+    this.ratingService.sendRating(userId, rating).subscribe(
+      (response) => {
+        console.log('Rating sent successfully!', response);
+      },
+      (error) => {
+        console.error('Error sending rating:', error);
+      }
+    );
   }
+
+  getBehavior(driverId: string): string {
+    const behaviorData = this.data.find((d) => d.DriverId === driverId);
+    return behaviorData ? behaviorData.Behavior : '';
+  }
+
+  getEcoDriving(driverId: string): string {
+    const ecoDrivingData = this.data1.find((d) => d.DriverId === driverId);
+    return ecoDrivingData ? ecoDrivingData.EcoDriving : '';
+  }
+
   loadAllCards() {
     this.cardService.getAllCards().subscribe(
       (cards: Card[]) => {
@@ -46,40 +68,39 @@ export class TablesWidget12Component implements OnInit {
         console.error('Error loading cards:', error);
       }
     );
-    }
-    loadAllusersCards() {
-      this.userService.getUsers().subscribe(
-        (users: AssureModel[]) => {
-          this.users = users;
-          console.log('Users:', users); // Afficher les utilisateurs dans la console
-        },
-        (error) => {
-          console.error('Error loading users:', error);
-        }
-      );
-    }
+  }
+
+  loadAllUsersCards() {
+    this.userService.getUsers().subscribe(
+      (users: AssureModel[]) => {
+        this.users = users;
+        console.log('Users:', users); // Display users in the console
+      },
+      (error) => {
+        console.error('Error loading users:', error);
+      }
+    );
+  }
 
   loadData() {
     this.dataSubscription = this.dataService.getDataFromSpark().subscribe(
-      response => {
+      (response) => {
         this.data = response;
       },
-      error => {
+      (error) => {
         console.error('API request error:', error);
       }
     );
-    }
-  
-    loadData1() {
-      this.dataSubscription = this.dataService.getDataFromSpark2().subscribe(
-        response => {
-          this.data1 = response;
-        },
-        error => {
-          console.error('API request error:', error);
-        }
-      );
-      }
-  
   }
 
+  loadData1() {
+    this.dataSubscription = this.dataService.getDataFromSpark2().subscribe(
+      (response) => {
+        this.data1 = response;
+      },
+      (error) => {
+        console.error('API request error:', error);
+      }
+    );
+  }
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { WidgetsModule } from '../../_metronic/partials';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardComponent,],
@@ -16,6 +17,7 @@ import { WidgetsModule } from '../../_metronic/partials';
       },
     ]),
     WidgetsModule,
+    FormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,3 +1,11 @@
+<select [(ngModel)]="selectedInterval">
+  <option value="1000">1 seconde</option>
+  <option value="5000">5 secondes</option>
+  <option value="15000">15 secondes</option>
+  <option value="30000">30 secondes</option>
+  <option value="60000">1 minute</option>
+</select>
+
 <div class="row g-5 g-xl-8">
   <div class="col-xl-6">
     <app-charts-widget1 class="card card-xl-stretch mb-xl-8">

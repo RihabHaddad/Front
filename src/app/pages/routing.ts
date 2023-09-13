@@ -98,7 +98,9 @@ const Routing: Routes = [
   {
     path: 'Eco Driving',
     component: EcodrivingComponent ,},
-  
+    {
+      path: 'A',
+      component: AccidentComponent ,},
     
   
 ];

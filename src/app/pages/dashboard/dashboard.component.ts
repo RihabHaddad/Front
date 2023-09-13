@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
   notifications: any[] = [];
   driverId = '0'; // Replace with the desired driverId
   sseSubscription: Subscription;
+  selectedInterval: number = 5000; // Valeur par défaut en millisecondes (ici, 5 secondes)
+
   constructor(private dataService: DataService ,private userService: UserService,private sseService: SseService) {this.initSse();}
   chartOptions: any = {};
   totalAssures = 0;
@@ -31,7 +33,17 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-
+  
+    
+  
+  
+  startRefreshTimer() {
+    setInterval(() => {
+      // Code de rafraîchissement à effectuer ici
+      console.log('Données mises à jour !');
+    }, this.selectedInterval);
+  }
+  
   ngOnDestroy() {
     this.sseService.closeSse();
     this.sseSubscription.unsubscribe();
@@ -55,6 +67,7 @@ export class DashboardComponent implements OnInit {
       console.error('Une erreur est survenue lors de la récupération du nombre total d\'utilisateurs :', error);
     }
   );
+  this.startRefreshTimer();
 }
 
   }

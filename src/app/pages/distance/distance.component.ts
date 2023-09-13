@@ -26,6 +26,8 @@ export class DistanceComponent implements OnInit {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
+    var marker = L.marker([33.8869, 9.5375]).addTo(this.map);
+
   }
 
   private fetchAndDisplayMarkers(): void {

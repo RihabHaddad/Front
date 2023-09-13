@@ -9,12 +9,14 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+ 
   getDataFromSpark(): Observable<any[]> {
-    const apiUrl = 'http://192.168.136.4:5000/api/data';
+    const apiUrl = 'http://192.168.136.4:5000/api/data'; // Replace with your data API URL
     return this.http.get<any[]>(apiUrl);
   }
+
   getDataFromSpark2(): Observable<any[]> {
-    const apiUrl = 'http://192.168.136.4:5001/api/data/eco';
+    const apiUrl = 'http://192.168.136.4:5001/api/data/eco'; // Replace with your eco data API URL
     return this.http.get<any[]>(apiUrl);
   }
   getDistanceAndTime(): Observable<any> {

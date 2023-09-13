@@ -1,5 +1,4 @@
-  <!-- begin::Header -->
-<div class="card-header border-0 pt-5" >
+<div class="card-header border-0 pt-5">
   <h3 class="card-title align-items-start flex-column">
     <span class="card-label fw-bolder fs-3 mb-1">Insured Statistics</span>
     <span class="text-muted mt-1 fw-bold fs-7">Classification</span>
@@ -33,97 +32,117 @@
     <table class="table align-middle gs-0 gy-4">
       <!-- begin::Table head -->
       <thead>
-        <tr class="fw-bolder text-muted bg-light" >
+        <tr class="fw-bolder text-muted bg-light">
           <th class="ps-4 min-w-300px rounded-start">DriverId</th>
           <th class="min-w-125px">CIN</th>
           <th class="min-w-200px">Driver Behavior</th>
           <th class="min-w-150px">Eco Driving</th>
           <th class="min-w-150px">Rating</th>
-
           <th class="min-w-200px text-end rounded-end"></th>
         </tr>
       </thead>
       <!-- end::Table head -->
       <!-- begin::Table body -->
-      <tbody  *ngFor="let user of users">
-        <tr >
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="symbol symbol-50px me-5">
-                <span class="symbol-label bg-light">
-                  <img
-                    src="./assets/media/svg/avatars/001-boy.svg"
-                    class="h-75 align-self-end"
-                    alt=""
-                  />
-                </span>
-              </div>
-              <div class="d-flex justify-content-start flex-column">
-                <a
-                  href="#"
-                  class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                >
-                 {{user.DriverId}}
-                </a>
-                <span class="text-muted fw-bold text-muted d-block fs-7">
-                  {{user.firstName}}
-                  </span>
-              
-              </div>
-            </div>
-          </td>
-          <td  >
-            <a
-              href="#"
-              class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-            >
-            <td>{{ user.cin}}</td>
-            </a>
-            <span class="text-muted fw-bold text-muted d-block fs-7"
-              ></span
-            >
-          </td>
-         
-          <td>
-            <a
-              href="#"
-              class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-            >
-                       </a>
-            <span class="text-muted fw-bold text-muted d-block fs-7">
-              {{ data[0]?.Behavior }}
-            </span>
-          </td>
-          <td>
-            <a
-              href="#"
-              class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-            >
-                       </a>
-            <span class="text-muted fw-bold text-muted d-block fs-7">
-            {{ data1[0]?.EcoDriving }} </span>
-          </td>
-         
-          <td>
-            <div class="rating">
-              <span class="star" [class.selected]="userRating >= 1" (click)="setRating(1)">★</span>
-              <span class="star" [class.selected]="userRating >= 2" (click)="setRating(2)">★</span>
-              <span class="star" [class.selected]="userRating >= 3" (click)="setRating(3)">★</span>
-              <span class="star" [class.selected]="userRating >= 4" (click)="setRating(4)">★</span>
-              <span class="star" [class.selected]="userRating >= 5" (click)="setRating(5)">★</span>
-            </div>
-            
-           
-            <span class="text-muted fw-bold text-muted d-block fs-7 mt-1">
-              <p>Votre note : <span>{{ userRating }}</span></p>
-            </span>
-          </td>
-        </tr>
-      
-       
-       
-        
-      </tbody>
+      <!-- ... Votre code HTML précédent ... -->
+<tbody *ngFor="let user of users">
+  <tr>
+    <td>
+      <div class="d-flex align-items-center">
+        <div class="symbol symbol-50px me-5">
+          <span class="symbol-label bg-light">
+            <img
+              src="./assets/media/svg/avatars/001-boy.svg"
+              class="h-75 align-self-end"
+              alt=""
+            />
+          </span>
+        </div>
+        <div class="d-flex justify-content-start flex-column">
+          <a
+            href="#"
+            class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+          >
+            {{ user.DriverId }}
+          </a>
+          <span class="text-muted fw-bold text-muted d-block fs-7">
+            {{ user.firstName }}
+          </span>
+        </div>
+      </div>
+    </td>
+    <td>
+      <a
+        href="#"
+        class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
+      >
+        {{ user.cin }}
+      </a>
+      <span class="text-muted fw-bold text-muted d-block fs-7"></span>
+    </td>
+   <!-- ... Your previous code ... -->
+
+<td>
+  <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"></a>
+  <span class="text-muted fw-bold text-muted d-block fs-7">
+    {{ getBehavior(user.DriverId) }}
+  </span>
+</td>
+<td>
+  <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"></a>
+  <span class="text-muted fw-bold text-muted d-block fs-7">
+    {{ getEcoDriving(user.DriverId) }}
+  </span>
+</td>
+<td>
+  <div class="rating">
+    <span
+      class="star"
+      [class.selected]="userRatings[user.DriverId] >= 1"
+      (click)="setRating(1, user.DriverId)"
+    >
+      ★
+    </span>
+    <span
+      class="star"
+      [class.selected]="userRatings[user.DriverId] >= 2"
+      (click)="setRating(2, user.DriverId)"
+    >
+      ★
+    </span>
+    <span
+      class="star"
+      [class.selected]="userRatings[user.DriverId] >= 3"
+      (click)="setRating(3, user.DriverId)"
+    >
+      ★
+    </span>
+    <span
+      class="star"
+      [class.selected]="userRatings[user.DriverId] >= 4"
+      (click)="setRating(4, user.DriverId)"
+    >
+      ★
+    </span>
+    <span
+      class="star"
+      [class.selected]="userRatings[user.DriverId] >= 5"
+      (click)="setRating(5, user.DriverId)"
+    >
+      ★
+    </span>
+  </div>
+
+  <span class="text-muted fw-bold text-muted d-block fs-7 mt-1">
+    <p>Votre note : <span>{{ userRatings[user.DriverId] || 0 }}</span></p>
+  </span>
+</td>
+
+<!-- ... Your remaining code ... -->
+
+  </tr>
+</tbody>
+<!-- ... Le reste de votre code HTML précédent ... -->
+
       <!-- end::Table body -->
     </table>
     <!-- end::Table -->
@@ -131,16 +150,16 @@
   <!-- end::Table container -->
 </div>
 <!-- begin::Body -->
+
 <style>
   /* styles.css */
-.star {
-  font-size: 30px;
-  cursor: pointer;
-  color: #ccc;
-}
+  .star {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+  }
 
-.star.selected {
-  color: #ffac00; /* Couleur des étoiles sélectionnées */
-}
-
+  .star.selected {
+    color: #ffac00; /* Couleur des étoiles sélectionnées */
+  }
 </style>
