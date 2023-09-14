@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { FuelConsumptionService } from 'src/app/_metronic/partials/content/widgets/mixed/mixed-widget11/FuelConsumptionService';
 import { DataService } from 'src/app/pages/dashboard/DataService';
 
 @Component({
@@ -14,9 +15,17 @@ export class FeedsComponent implements OnInit {
   private dataSubscription: Subscription;
 
 
-  
-  constructor(private dataService: DataService,) {}
-  ngOnInit(): void {     this.loadData(); 
+  fuelConsumptionData: any[];
+
+  constructor(private dataService: DataService,private fuelService: FuelConsumptionService) {}
+  ngOnInit(): void {     const driverId = '1';
+
+  // Appelez le service pour obtenir les données de consommation de carburant
+  this.fuelService.getFuelConsumption(driverId).subscribe((data) => {
+    this.fuelConsumptionData = data;
+  });
+this.loadData(); 
+    
   }
   
    

@@ -6,6 +6,7 @@ import { CardService } from 'src/app/pages/cards/cards.service';
 import { DataService } from 'src/app/pages/dashboard/DataService';
 import { UserService } from 'src/app/pages/user.service';
 import { RatingService } from './RatingService';
+import { SelectedDriverService } from '../../mixed/mixed-widget1/SelectedDriverService';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class TablesWidget12Component implements OnInit {
     private cardService: CardService,
     private dataService: DataService,
     private userService: UserService,
-    private ratingService: RatingService
+    private ratingService: RatingService,private selectedDriverService: SelectedDriverService
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +35,9 @@ export class TablesWidget12Component implements OnInit {
     this.loadAllUsersCards();
     this.loadData1();
   }
-
+  selectDriver(driverId: string) {
+    this.selectedDriverService.setSelectedDriver(driverId);
+  }
   setRating(rating: number, userId: string) {
     this.userRatings[userId] = rating;
 

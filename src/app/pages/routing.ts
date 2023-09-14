@@ -85,7 +85,7 @@ const Routing: Routes = [
     component: UpdateCardComponent,
   },
   {
-  path: 'DriverBehavior',
+  path: 'DriverBehavior/:id',
   component: DriverBehaviorComponent ,},
   {
   path: 'Dist',
