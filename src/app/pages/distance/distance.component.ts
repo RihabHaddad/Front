@@ -1,19 +1,17 @@
-import * as L from 'leaflet';
-// driver-map.component.ts
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import * as L from 'leaflet';
+import { AccidentService } from './AccidentService';
+
 @Component({
   selector: 'app-distance',
   templateUrl: './distance.component.html',
   styleUrls: ['./distance.component.scss']
 })
 export class DistanceComponent implements OnInit {
-
-    
   private map: L.Map;
   private markers: L.Marker[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private accidentService: AccidentService) {} // Injectez votre service AccidentService
 
   ngOnInit(): void {
     this.initMap();
@@ -26,22 +24,23 @@ export class DistanceComponent implements OnInit {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
-    var marker = L.marker([33.8869, 9.5375]).addTo(this.map);
-
   }
 
   private fetchAndDisplayMarkers(): void {
-    this.http.get<any[]>('http://localhost:8002/api/drivers') // Update the URL to your actual API endpoint
+    this.accidentService.getAccidents() // Utilisez la méthode du service pour obtenir les données d'accidents
       .subscribe(
-        drivers => {
-          drivers.forEach(driver => {
-            const location: L.LatLngExpression = [driver.latitude, driver.longitude];
+        accidents => {
+          accidents.forEach(accident => {
+            const location: L.LatLngExpression = [accident.Latitude, accident.Longitude];
             const marker = L.marker(location).addTo(this.map);
-            this.markers.push(marker);
+            marker.bindPopup(`Driver ID: ${accident._id}<br>Altitude: ${accident.Altitude}<br>Status: ${accident.Status}`);
+
+            // Zoom sur l'emplacement de l'accident avec un niveau de zoom
+            this.map.setView(location, 15);
           });
         },
         error => {
-          console.error('Error fetching driver locations:', error);
+          console.error('Error fetching accidents:', error);
         }
       );
   }

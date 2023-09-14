@@ -144,7 +144,14 @@
     <p>Votre note : <span>{{ userRatings[user.DriverId] || 0 }}</span></p>
   </span>
 </td>
-
+<td>
+  <!-- Colonne pour le bouton "Send Advice" -->
+  <div class="d-flex justify-content-end">
+    <a href="#" class="btn btn-icon btn-light btn-sm">
+      <i class="bi bi-envelope"></i> <!-- Icône d'enveloppe (Bootstrap Icons) -->
+    </a>
+  </div>
+</td>
 <!-- ... Your remaining code ... -->
 
   </tr>
