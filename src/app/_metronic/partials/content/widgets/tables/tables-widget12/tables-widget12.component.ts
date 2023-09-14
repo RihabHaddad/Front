@@ -19,7 +19,7 @@ export class TablesWidget12Component implements OnInit {
   data1: any[] = [];
   users: AssureModel[] = [];
   userRatings: { [key: string]: number } = {};
-
+  searchTerm: string = '';
   private dataSubscription: Subscription;
 
   constructor(
@@ -28,6 +28,7 @@ export class TablesWidget12Component implements OnInit {
     private userService: UserService,
     private ratingService: RatingService,private selectedDriverService: SelectedDriverService
   ) {}
+  
 
   ngOnInit(): void {
     this.loadAllCards();
@@ -84,7 +85,21 @@ export class TablesWidget12Component implements OnInit {
       }
     );
   }
-
+  searchUsers(searchTerm: string): void {
+    if (!searchTerm) {
+      this.loadAllUsersCards(); // Réinitialiser la liste des utilisateurs en cas de recherche vide
+      return;
+    }
+   
+    this.userService.searchUsers(searchTerm).subscribe(
+      (users: AssureModel[]) => {
+        this.users = users; // Mettre à jour la liste des utilisateurs avec les résultats de recherche
+      },
+      (error) => {
+        console.error('Erreur lors de la recherche des utilisateurs:', error);
+      }
+    );
+  }
   loadData() {
     this.dataSubscription = this.dataService.getDataFromSpark().subscribe(
       (response) => {
