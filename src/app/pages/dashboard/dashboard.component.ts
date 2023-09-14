@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { getCSSVariableValue } from 'src/app/_metronic/kt/_utils';
 import { Chart } from 'chart.js';
 import { UserService } from '../user.service';
@@ -18,6 +18,10 @@ export class DashboardComponent implements OnInit {
   driverId = '0'; // Replace with the desired driverId
   sseSubscription: Subscription;
   selectedInterval: number = 5000; // Valeur par défaut en millisecondes (ici, 5 secondes)
+  public doughnutChartData: number[] = [250, 100, 50];
+  public doughnutChartLabels: string[] = ['Actives', 'Expirées', 'En attente de renouvellement'];
+  public doughnutChartType: string = 'doughnut';
+  @ViewChild('myChart') myChartRef!: ElementRef;
 
   constructor(private dataService: DataService ,private userService: UserService,private sseService: SseService) {this.initSse();}
   chartOptions: any = {};
@@ -50,6 +54,23 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {   
+    const ctx = this.myChartRef.nativeElement.getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: this.doughnutChartLabels,
+      datasets: [
+        {
+          data: this.doughnutChartData,
+          backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56'],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  });
+
     this.dataService.getDataFromSpark().subscribe(
       (response: any) => {
         this.data = response;
@@ -71,6 +92,7 @@ export class DashboardComponent implements OnInit {
 }
 
   }
+  
 
   function getChartOptions(height: number) {
     const labelColor = getCSSVariableValue('--bs-gray-500');

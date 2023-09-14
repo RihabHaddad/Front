@@ -23,7 +23,7 @@ class AssureModel {
 })
 export class TablesWidget9Component {
   Listuser: AssureModel[] = [];
-  
+  searchTerm: string = '';
   selectedUser: AssureModel = new AssureModel();
   constructor(private userService: UserService , private router: Router
    , private elementRef: ElementRef ,private http: HttpClient ) { }
@@ -88,7 +88,7 @@ redirectToupdateUserPage() {
   this.router.navigate(['/updateusers']);
 }
 
-searchUserss(searchTerm: string): void {
+searchUsers(searchTerm: string): void {
   if (!searchTerm) {
     this.getUsers(); // Réinitialiser la liste des utilisateurs en cas de recherche vide
     return;
@@ -128,12 +128,12 @@ associateUserWithColor(user: AssureModel): string {
   return userColor !== undefined ? userColor : ''; // Utilisez une valeur par défaut (une chaîne vide '') si userColor est undefined.
 }
 
-searchTerm: string;
+
 users: any[] = [];
 errorMessage: string;
 
 
-searchUsers() {
+searchUserss() {
   if (!this.searchTerm) {
     this.errorMessage = 'Veuillez fournir un terme de recherche valide';
     return;

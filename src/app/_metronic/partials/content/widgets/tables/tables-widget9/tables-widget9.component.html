@@ -1,10 +1,11 @@
+<div class="card mb-5 mb-xl-8">
 <div class="card-body py-3">
   <div class="card-header border-0 pt-6">
     <!--begin::Card title-->
     <div class="card-title">
         <!--begin::Search-->
         <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13"
-        placeholder="Search user" [(ngModel)]="searchTerm" (input)="searchUsers()">
+        placeholder="Search user" [(ngModel)]="searchTerm" (input)="searchUsers(searchTerm)">
  
         <!--end::Search-->
     </div>
@@ -383,8 +384,8 @@ background-image: url('/metronic8/demo1/assets/media/svg/files/blank-image.svg')
 
     
 </div>
-  <div class="table-responsive" >
-    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+<div class="table-responsive custom-table-container">
+  <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4 custom-table">
       <thead>
         <tr class="fw-bolder text-muted">
           <th class="w-25px">
@@ -461,9 +462,12 @@ background-image: url('/metronic8/demo1/assets/media/svg/files/blank-image.svg')
     </table>
   </div>
 </div>
+</div>
 <style>
   /* Add the following CSS styles to your existing stylesheet */
-
+.card {
+  height: 400;
+}
   /* Avatar Styles */
   .symbol {
     width: 45px;
