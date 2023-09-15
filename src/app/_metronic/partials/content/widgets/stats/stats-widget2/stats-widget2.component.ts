@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/pages/dashboard/DataService';
 
@@ -13,15 +14,17 @@ export class StatsWidget2Component implements OnInit, OnDestroy {
 
   data: any[] = [];
   private dataSubscription: Subscription;
+  @Input() driverId: string = '';
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.loadData();
-  }
-
-  loadData() {
-    this.dataSubscription = this.dataService.getDataFromSpark().subscribe(
+    this.route.params.subscribe(params => {
+      this.driverId = params['DriverId'];
+    this.loadData(this.driverId);
+  })}
+  loadData(driverId: string) {
+    this.dataSubscription = this.dataService.getDataFromSpark3(driverId).subscribe(
       response => {
         this.data = response;
       },

@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApexOptions } from 'ng-apexcharts';
 import { getCSSVariableValue } from 'src/app/_metronic/kt/_utils/DomHelpers';
 
@@ -30,10 +31,17 @@ export class DriverBehaviorComponent implements OnInit {
   labelColor: string;
   baseColor: string;
   lightColor: string;
+  
 
-  constructor() {}
+  constructor(private route:ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const driverId= params['DriverId']; // Utilisez le nom du paramètre approprié
+      // Faites quelque chose avec id ici
+    });
+    
+
     this.height = 150;
     this.labelColor = getCSSVariableValue('--bs-gray-800');
     this.baseColor = getCSSVariableValue('--bs-' + this.color);
@@ -169,5 +177,7 @@ function getChartOptions(
     },
   };
   return options;
+  
 }
+
 

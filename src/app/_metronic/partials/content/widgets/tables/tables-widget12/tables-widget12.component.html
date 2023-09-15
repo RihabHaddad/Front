@@ -69,6 +69,7 @@
           href="javascript:void(0);"
           class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
           [routerLink]="['/DriverBehavior', user.DriverId]"
+          (click)="selectDriver(user.DriverId)"  
           >
             {{ user.DriverId }}
           </a>

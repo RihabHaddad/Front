@@ -8,8 +8,11 @@ import { Observable } from 'rxjs';
 export class DataService {
 
   constructor(private http: HttpClient) { }
-
- 
+  private baseUrlsp = 'http://192.168.136.4:5000'; 
+  getDataFromSpark3(driverId: string): Observable<any[]> {
+    const baseUrlsp  = `${this.baseUrlsp}/api/data/${driverId}`;; // Replace with your data API URL
+    return this.http.get<any[]>(baseUrlsp);
+  }
   getDataFromSpark(): Observable<any[]> {
     const apiUrl = 'http://192.168.136.4:5000/api/data'; // Replace with your data API URL
     return this.http.get<any[]>(apiUrl);

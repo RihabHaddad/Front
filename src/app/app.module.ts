@@ -35,6 +35,7 @@ import { DistancetravelledComponent } from './pages/distancetravelled/distancetr
 import { EcodrivingComponent } from './pages/ecodriving/ecodriving.component';
 import { LineChartComponent } from './pages/linechart/linechart.component';
 import { LineChartModule } from './pages/line-chart/line-chart.module';
+import { GestionAssuresComponent } from './pages/gestion-assures/gestion-assures.component';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -47,7 +48,7 @@ function appInitializer(authService: AuthService) {
 
 @NgModule({
   declarations: [AppComponent, AddCardComponent, UpdateCardComponent, 
-    AccidentComponent, NotificationsComponent, EcodrivingComponent, 
+    AccidentComponent, NotificationsComponent, EcodrivingComponent, GestionAssuresComponent, 
     ],
   imports: [
     BrowserModule,

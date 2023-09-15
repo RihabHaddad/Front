@@ -15,6 +15,7 @@ import { AccidentComponent } from './accident/accident.component';
 import { DistancetravelledComponent } from './distancetravelled/distancetravelled.component';
 import { EcodrivingComponent } from './ecodriving/ecodriving.component';
 import { DistanceComponent } from './distance/distance.component';
+import { GestionAssuresComponent } from './gestion-assures/gestion-assures.component';
 
 
 const Routing: Routes = [
@@ -85,8 +86,9 @@ const Routing: Routes = [
     component: UpdateCardComponent,
   },
   {
-  path: 'DriverBehavior',
+  path: 'DriverBehavior/:DriverId',
   component: DriverBehaviorComponent ,},
+  
   {
   path: 'Dist',
   component: DistanceComponent ,},
@@ -94,6 +96,9 @@ const Routing: Routes = [
   {
   path: 'Distance',
   component: DistancetravelledComponent ,},
+  {
+    path: 'Assures',
+    component: GestionAssuresComponent ,},
 
   {
     path: 'Eco Driving',

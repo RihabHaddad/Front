@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FuelConsumptionService } from 'src/app/_metronic/partials/content/widgets/mixed/mixed-widget11/FuelConsumptionService';
 import { DataService } from 'src/app/pages/dashboard/DataService';
@@ -8,7 +8,9 @@ import { DataService } from 'src/app/pages/dashboard/DataService';
   templateUrl: './feeds.component.html',
 })
 export class FeedsComponent implements OnInit {
- 
+  @Input() title = '';
+  @Input() description = '';
+  @Input() avatar = '';
   data: any[] = [];
 
 
