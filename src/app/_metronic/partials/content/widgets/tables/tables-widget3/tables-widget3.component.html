@@ -2,7 +2,7 @@
 <div class="card-header border-0 pt-5 xl">
   <h3 class="card-title align-items-start flex-column">
     <span class="card-label fw-bolder fs-3 mb-1">Eco Driving KPIS</span>
-    <span class="text-muted mt-1 fw-bold fs-7">Over 100 pending files</span>
+    <span class="text-muted mt-1 fw-bold fs-7"></span>
   </h3>
 
   <div class="card-toolbar">
@@ -14,10 +14,7 @@
       data-kt-menu-placement="bottom-end"
       data-kt-menu-flip="top-end"
     >
-      <span
-        [inlineSVG]="'./assets/media/icons/duotune/general/gen024.svg'"
-        class="svg-icon svg-icon-2"
-      ></span>
+      <i class="fas fa-cog"></i>
     </button>
     <app-dropdown-menu1></app-dropdown-menu1>
     <!-- end::Menu -->
@@ -25,7 +22,6 @@
 </div>
 <!-- end::Header -->
 <!-- begin::Body -->
-
 
 <div class="card-body py-3">
   <!-- begin::Table container -->
@@ -36,117 +32,116 @@
       <thead>
         <tr>
           <th class="p-0 w-50px"></th>
-          <th class="p-0 min-w-150px"></th>
-          <th class="p-0 min-w-140px"></th>
-          <th class="p-0 min-w-120px"></th>
+          <th class="p-0 min-w-150px">KPI</th>
+          <th class="p-0 min-w-140px">Value</th>
+          <th class="p-0 min-w-140px">Classification</th>
           <th class="p-0 min-w-40px"></th>
         </tr>
       </thead>
       <!-- end::Table head -->
       <!-- begin::Table body -->
-      <tbody >
+      <tbody>
         <tr *ngFor="let kpi of driverKPIs; let i = index">
           <td>
             <div class="symbol symbol-50px me-2">
-              <span class="symbol-label bg-light-success">
-                <span
-                  [inlineSVG]="
-                    './assets/media/icons/duotune/ecommerce/ecm002.svg'
-                  "
-                  class="svg-icon svg-icon-2x svg-icon-success"
-                ></span>
-              </span>
+              <i class="fas fa-car text-success fa-2x"></i>
             </div>
           </td>
-          <td >
-            <a
-              href="#"
-              class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-            >
-              Idling
-            </a>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">
+                Idling
+              </a>
+            </div>
           </td>
-          <td class="text-end text-muted fw-bold">{{kpi.idling}}</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">{{ data[0]?.idling_classification }} </td>
+          <td class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="text-muted fw-bold">{{ kpi.idling }}</span>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="text-dark fw-bolder fs-6">{{ data[0]?.idling_classification }}</span>
+            </div>
+          </td>
+          <td></td>
         </tr>
         <tr *ngFor="let kpi of driverKPIs; let i = index">
           <td>
             <div class="symbol symbol-50px me-2">
-              <span class="symbol-label bg-light-danger">
-                <span
-                  [inlineSVG]="
-                    './assets/media/icons/duotune/general/gen024.svg'
-                  "
-                  class="svg-icon svg-icon-2x svg-icon-danger"
-                ></span>
-              </span>
+              <i class="fas fa-tachometer-alt text-danger fa-2x"></i>
             </div>
           </td>
           <td>
-            <a
-              href="#"
-              class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-            >
-            
-highRPM
-
-            </a>
+            <div class="d-flex align-items-center">
+              <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">
+                High RPM
+              </a>
+            </div>
           </td>
-          <td class="text-end text-muted fw-bold">{{kpi.
-            highRPM}}</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">{{ data[0]?.highRPM_classification }}</td>
+          <td class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="text-muted fw-bold">{{ kpi.highRPM }}</span>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="text-dark fw-bolder fs-6">{{ data[0]?.highRPM_classification }}</span>
+            </div>
+          </td>
+          <td></td>
         </tr>
         <tr *ngFor="let kpi of driverKPIs; let i = index">
           <td>
             <div class="symbol symbol-50px me-2">
-              <span class="symbol-label bg-light-info">
-                <span
-                  [inlineSVG]="
-                    './assets/media/icons/duotune/finance/fin006.svg'
-                  "
-                  class="svg-icon svg-icon-2x svg-icon-info"
-                ></span>
-              </span>
+              <i class="fas fa-gas-pump text-info fa-2x"></i>
             </div>
           </td>
           <td>
-            <a
-              href="#"
-              class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-            >
-              Fuel Consumption
-            </a>
+            <div class="d-flex align-items-center">
+              <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">
+                Fuel Consumption
+              </a>
+            </div>
           </td>
-          <td class="text-end text-muted fw-bold">{{kpi.FuelConsumption}}</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">{{ data[0]?.FuelConsumption_classification }}</td>
+          <td class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="text-muted fw-bold">{{ kpi.FuelConsumption }}</span>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="text-dark fw-bolder fs-6">{{ data[0]?.FuelConsumption_classification }}</span>
+            </div>
+          </td>
+          <td></td>
         </tr>
         <tr *ngFor="let kpi of driverKPIs; let i = index">
           <td>
             <div class="symbol symbol-50px me-2">
-              <span class="symbol-label bg-light-warning"
-                ><span
-                  [inlineSVG]="
-                    './assets/media/icons/duotune/abstract/abs027.svg'
-                  "
-                  class="svg-icon svg-icon-2x svg-icon-warning"
-                ></span>
-              </span>
+              <i class="fas fa-car-crash text-warning fa-2x"></i>
             </div>
           </td>
           <td>
-            <a
-              href="#"
-              class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-            >
-            GearShiftUp
-
-            </a>
+            <div class="d-flex align-items-center">
+              <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">
+                Gear Shift Up
+              </a>
+            </div>
           </td>
-          <td class="text-end text-muted fw-bold">{{kpi.GearShiftUp
-          }}</td>
-          <td class="text-end text-dark fw-bolder fs-6 pe-0">{{ data[0]?.GearShiftUp_classification }}</td>
+          <td class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="text-muted fw-bold">{{ kpi.GearShiftUp }}</span>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="text-dark fw-bolder fs-6">{{ data[0]?.GearShiftUp_classification }}</span>
+            </div>
+          </td>
+          <td></td>
         </tr>
-       
+        <!-- Répétez cette structure pour d'autres KPIs -->
       </tbody>
       <!-- end::Table body -->
     </table>
@@ -154,4 +149,4 @@ highRPM
   </div>
   <!-- end::Table container -->
 </div>
-<!-- begin::Body -->
+<!-- end::Body -->

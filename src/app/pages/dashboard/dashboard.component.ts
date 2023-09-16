@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { getCSSVariableValue } from 'src/app/_metronic/kt/_utils';
 import { Chart } from 'chart.js';
 import { UserService } from '../user.service';
@@ -15,14 +15,14 @@ export class DashboardComponent implements OnInit {
   data: string;
   totalUsers: number | undefined;
   notifications: any[] = [];
-  driverId = '0'; // Replace with the desired driverId
+  driverIdd = '0'; // Replace with the desired driverId
   sseSubscription: Subscription;
   selectedInterval: number = 5000; // Valeur par défaut en millisecondes (ici, 5 secondes)
   public doughnutChartData: number[] = [250, 100, 50];
   public doughnutChartLabels: string[] = ['Actives', 'Expirées', 'En attente de renouvellement'];
   public doughnutChartType: string = 'doughnut';
   @ViewChild('myChart') myChartRef!: ElementRef;
-
+  @Input() driverId: string = '';
   constructor(private dataService: DataService ,private userService: UserService,private sseService: SseService) {this.initSse();}
   chartOptions: any = {};
   totalAssures = 0;
@@ -38,16 +38,20 @@ export class DashboardComponent implements OnInit {
     );
   }
   
-    
+  
+  
   
   
   startRefreshTimer() {
-    setInterval(() => {
-      // Code de rafraîchissement à effectuer ici
-      console.log('Données mises à jour !');
-    }, this.selectedInterval);
-  }
+    console.log('Minuterie de rafraîchissement démarrée avec intervalle', this.selectedInterval, 'ms');
   
+    const updateData = () => {
+      console.log('Données mises à jour !');
+      setTimeout(updateData, this.selectedInterval);
+    };
+  
+    setTimeout(updateData, this.selectedInterval);
+  }
   ngOnDestroy() {
     this.sseService.closeSse();
     this.sseSubscription.unsubscribe();
@@ -71,7 +75,7 @@ export class DashboardComponent implements OnInit {
     },
   });
 
-    this.dataService.getDataFromSpark().subscribe(
+    this.dataService.getDataFromSpark3(this.driverId).subscribe(
       (response: any) => {
         this.data = response;
       },

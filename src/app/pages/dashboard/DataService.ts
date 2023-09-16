@@ -14,7 +14,7 @@ export class DataService {
     return this.http.get<any[]>(baseUrlsp);
   }
   getDataFromSpark(): Observable<any[]> {
-    const apiUrl = 'http://192.168.136.4:5000/api/data'; // Replace with your data API URL
+    const apiUrl = 'http://192.168.136.4:5002/api/data'; // Replace with your data API URL
     return this.http.get<any[]>(apiUrl);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AssureModel } from 'src/app/modules/auth/models/assure.model';
 import { Card } from 'src/app/pages/cards/card.model';
@@ -21,7 +21,7 @@ export class TablesWidget12Component implements OnInit {
   userRatings: { [key: string]: number } = {};
   searchTerm: string = '';
   private dataSubscription: Subscription;
-
+  @Input() driverId: string = '';
   constructor(
     private cardService: CardService,
     private dataService: DataService,
