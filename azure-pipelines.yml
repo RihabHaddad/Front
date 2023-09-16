@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    exclude:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: Build
+    jobs:
+      - job: BuildNodeApp
+        steps:
+          - script: |
+              # Installer les dépendances Node.js
+              npm install
+              # Exécuter le build
+              npm run build
+            displayName: 'Build Node.js App'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathtoPublish: '$(System.DefaultWorkingDirectory)'
+              artifactName: 'node-app'
+            displayName: 'Publish Node.js Artifacts'
+
+  - stage: Deploy
+    jobs:
+      - job: DeployAngularApp
+        steps:
+          - download: current
+            artifact: 'node-app'
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '12.x'
+              displayName: 'Install Node.js'
+          - script: |
+              # Installer les dépendances Angular
+              npm install -g @angular/cli
+              npm install
+              # Exécuter le déploiement Angular
+              ng build --prod
+            displayName: 'Build Angular App'
+          - task: AzureWebApp@1
+            inputs:
+              azureSubscription: 'YourAzureServiceConnection'
+              appName: 'YourWebAppName'
+              package: '$(Pipeline.Workspace)/current/dist'
+            displayName: 'Deploy Angular to Azure Web App'
