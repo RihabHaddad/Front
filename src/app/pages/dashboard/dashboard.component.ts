@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   totalAssures = 0;
   chart: Chart;
   initSse() {
-    this.sseSubscription = this.sseService.initSse(this.driverId).subscribe(
+    this.sseSubscription = this.sseService.initSse(this.driverIdd).subscribe(
       (notification) => {
         this.notifications.push(notification);
       },
@@ -57,8 +57,16 @@ export class DashboardComponent implements OnInit {
     this.sseSubscription.unsubscribe();
   }
 
-  ngOnInit(): void {   
-    const ctx = this.myChartRef.nativeElement.getContext('2d');
+  ngOnInit(): void {  
+    this.userService.getTotalUsers().subscribe(
+    response => {
+      this.totalUsers = response.totalUsers;
+    },
+    error => {
+      console.error('Une erreur est survenue lors de la récupération du nombre total d\'utilisateurs :', error);
+    }
+  ); 
+  const ctx = this.myChartRef.nativeElement.getContext('2d');
   new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -84,131 +92,14 @@ export class DashboardComponent implements OnInit {
       }
     );
   
-    this.chartOptions = getChartOptions(350); this.userService.getTotalUsers().subscribe(
-    response => {
-      this.totalUsers = response.totalUsers;
-    },
-    error => {
-      console.error('Une erreur est survenue lors de la récupération du nombre total d\'utilisateurs :', error);
-    }
-  );
+
+    
+    
   this.startRefreshTimer();
 }
 
   }
   
 
-  function getChartOptions(height: number) {
-    const labelColor = getCSSVariableValue('--bs-gray-500');
-    const borderColor = getCSSVariableValue('--bs-gray-200');
-    const baseColor = getCSSVariableValue('--bs-primary');
-    const secondaryColor = getCSSVariableValue('--bs-gray-300');
   
-    return {
-      series: [
-        {
-          name: 'Nombre de véhicules assurés',
-          data: [120, 85, 95, 70, 60],
-        },
-  
-        
-      ],
-      chart: {
-        fontFamily: 'inherit',
-        type: 'bar',
-        height: height,
-        toolbar: {
-          show: false,
-        },
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-          columnWidth: '12%',
-          borderRadius: 5,
-        },
-      },
-      legend: {
-        show: false,
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent'],
-      },
-      xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        axisBorder: {
-          show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
-        labels: {
-          style: {
-            colors: labelColor,
-            fontSize: '12px',
-          },
-        },
-      },
-      yaxis: {
-        labels: {
-          style: {
-            colors: labelColor,
-            fontSize: '12px',
-          },
-        },
-      },
-      fill: {
-        opacity: 1,
-      },
-      states: {
-        normal: {
-          filter: {
-            type: 'none',
-            value: 0,
-          },
-        },
-        hover: {
-          filter: {
-            type: 'none',
-            value: 0,
-          },
-        },
-        active: {
-          allowMultipleDataPointsSelection: false,
-          filter: {
-            type: 'none',
-            value: 0,
-          },
-        },
-      },
-      tooltip: {
-        style: {
-          fontSize: '12px',
-        },
-        y: {
-          formatter: function (val: number) {
-            return '$' + val + ' thousands';
-          },
-        },
-      },
-      colors: [baseColor, secondaryColor],
-      grid: {
-        borderColor: borderColor,
-        strokeDashArray: 4,
-        yaxis: {
-          lines: {
-            show: true,
-          },
-        },
-      },
-    };
-
-    
-    
-  }
 

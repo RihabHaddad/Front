@@ -2,20 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AssureModel } from 'src/app/modules/auth/models/assure.model';
 import { UserService } from 'src/app/pages/user.service';
 import { UserModel } from 'src/app/pages/user/user.model';
 
 
-class AssureModel {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  cin: string;
-  drivingLicense: string;
-  username: string;
-}
+
 
 @Component({
   selector: 'app-tables-widget9',

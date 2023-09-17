@@ -452,7 +452,7 @@ background-image: url('/metronic8/demo1/assets/media/svg/files/blank-image.svg')
               <a *ngIf="user && user._id" [routerLink]="['/updateusers', user._id]" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                 <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'" class="svg-icon svg-icon-3"></span>
               </a>
-              <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="deleteUser(user._id)">
+              <a  [routerLink]="['/users']" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="deleteUser(user._id)">
                 <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'" class="svg-icon svg-icon-3"></span>
               </a>
               

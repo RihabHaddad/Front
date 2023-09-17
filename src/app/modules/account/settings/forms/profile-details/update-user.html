@@ -118,37 +118,16 @@
           />
         </div>
       </div>
-      <div class="row mb-6">
-        <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required">Country</span></label>
-        <div class="col-lg-8 fv-row">
-          <select class="form-select form-select-solid form-select-lg fw-bold" name="country">
-            <option value="">Select a Country...</option>
-            <option value="ZA">South Africa</option>
-            <option value="GS">South Georgia and the South Sandwich Islands</option>
-            <option value="TW">Taiwan, Province of China</option>
-            <option value="TJ">Tajikistan</option>
-            <option value="TZ">Tanzania, United Republic of</option>
-            <option value="TH">Thailand</option>
-            <option value="TL">Timor-Leste</option>
-            <option value="TG">Togo</option>
-            <option value="TK">Tokelau</option>
-            <option value="TO">Tonga</option>
-            <option value="TT">Trinidad and Tobago</option>
-            <option value="TN">Tunisia</option>
-            <option value="TR">Turkey</option>
-            <option value="TM">Turkmenistan</option>
-            <option value="TC">Turks and Caicos Islands</option>
-          </select>
-        </div>
-      </div>
+     
       <div class="card-footer d-flex justify-content-end py-6 px-9">
         <button
           type="button"
           class="btn btn-primary"
           [disabled]="isLoading"
           (click)= "updateSelectedUser()"
+          [routerLink]="['/users']"
         >
-          <ng-container *ngIf="!isLoading">Save </ng-container>
+          <ng-container *ngIf="!isLoading">Update </ng-container>
           <ng-container *ngIf="isLoading">
             <span clas="indicator-progress" [style.display]="'block'">
               Please wait...{{ " " }}
