@@ -1,1 +1,56 @@
+trigger:
+- main
 
+pool:
+  name: 'ubuntu-pfe'  
+
+stages:
+- stage: Build
+  displayName: 'Build Stage'
+  jobs:
+  - job: BuildJob
+    steps:
+    - task: UseNode@1
+      inputs:
+        version: '16.20.1'
+      displayName: 'Installer Node.js'
+
+    - script: |
+        npm install -g @angular/cli
+        npm install
+        ng build --prod
+      displayName: 'Installer Angular CLI et construire l''application'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.SourcesDirectory)/dist'  
+        artifactName: 'angular-app'
+      displayName: 'Publier l''application Angular'
+
+- stage: Deploy
+  displayName: 'Deploy Stage'
+  dependsOn: Build
+  jobs:
+  - job: DeployJob
+    steps:
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifactName: 'angular-app'
+        targetPath: '$(Build.ArtifactStagingDirectory)/app'
+      displayName: 'Télécharger l''application Angular depuis l''artefact'
+
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'pfe'
+        appType: 'webAppLinux'
+        WebAppName: 'AutoGuard'
+        packageForLinux: '$(Build.ArtifactStagingDirectory)/app'
+        RuntimeStack: 'NODE|16.20.1'
+        StartupCommand: 'npm start'  
+
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'  
+        artifactName: 'deployment-logs'
+      displayName: 'Publier les journaux de déploiement'

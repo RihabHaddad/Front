@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { getCSSVariableValue } from '../../../../../kt/_utils';
+import { FuelConsumptionService } from '../mixed-widget11/FuelConsumptionService';
 @Component({
   selector: 'app-mixed-widget7',
   templateUrl: './mixed-widget7.component.html',
@@ -9,20 +10,23 @@ export class MixedWidget7Component implements OnInit {
   @Input() chartHeight: string;
   chartOptions: any = {};
 
-  constructor() {}
+  constructor(private fuelService: FuelConsumptionService) {}
 
   ngOnInit(): void {
-    this.chartOptions = getChartOptions(this.chartHeight, this.chartColor);
-  }
-}
+    const driverId = '1'; // Replace with the actual driver ID
+    this.fuelService.getFuelConsumption(driverId).subscribe((fuelData: any) => {
+      const fuelConsumptionData = fuelData.map((entry: any) => entry.FuelConsumption);
+    this.chartOptions = getChartOptions(this.chartHeight, this.chartColor, fuelConsumptionData);
+  });
 
-function getChartOptions(chartHeight: string, chartColor: string) {
+
+function getChartOptions(chartHeight: string, chartColor: string ,fuelConsumptionData: number[]) {
   const baseColor = getCSSVariableValue('--bs-' + chartColor);
   const lightColor = getCSSVariableValue('--bs-light-' + chartColor);
   const labelColor = getCSSVariableValue('--bs-gray-700');
-
+  const roundedFuelConsumptionData = fuelConsumptionData.map(value => Number(value.toFixed(2)));
   return {
-    series: [74],
+    series: [roundedFuelConsumptionData ],
     chart: {
       fontFamily: 'inherit',
       height: chartHeight,
@@ -63,3 +67,4 @@ function getChartOptions(chartHeight: string, chartColor: string) {
     labels: ['Progress'],
   };
 }
+  }}

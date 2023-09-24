@@ -14,28 +14,8 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.getUsers();
+  
   }
 
-  getUsers() {
-    this.userService.getUsers().subscribe(
-      (response: UserModel[]) => {
-        console.log(response); // Affiche la réponse du service dans la console
-        this.users = response;
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
-  deleteUser(userId: number) {
-    this.userService.deleteUser(userId).subscribe(
-      () => {
-        this.getUsers();
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
+  
 }

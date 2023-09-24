@@ -92,13 +92,26 @@
 
 <td>
   <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"></a>
-  <span class="text-muted fw-bold text-muted d-block fs-7">
+  <span class="mmy-custom-text">
     {{ getBehavior(user.DriverId) }}
   </span>
+  <style>
+  .my-custom-text {
+    font-weight: bold;
+    color: #22844E; /* Couleur de texte personnalisée */
+    font-size: 13px; /* Taille de police personnalisée */
+    /* Ajoutez d'autres styles personnalisés ici */
+  }
+  .mmy-custom-text {
+    font-weight: bold;
+    color: #0080FF; /* Couleur de texte personnalisée */
+    font-size: 13px; /* Taille de police personnalisée */
+    /* Ajoutez d'autres styles personnalisés ici */ 
+  }</style>
 </td>
 <td>
   <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"></a>
-  <span class="text-muted fw-bold text-muted d-block fs-7">
+  <span class="my-custom-text">
     {{ getEcoDriving(user.DriverId) }}
   </span>
 </td>

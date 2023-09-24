@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserModel } from '../../models/user.model';
 import { environment } from '../../../../../environments/environment';
 import { AuthModel } from '../../models/auth.model';
+import { catchError, tap } from 'rxjs/operators';
 
 const API_USERS_URL = `http://localhost:8002`;
 
@@ -15,8 +16,16 @@ export class AuthHTTPService {
 
   // public methods
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${API_USERS_URL}/api/auth/login`, { email, password });
-  }
+    return this.http.post<any>(`${API_USERS_URL}/api/auth/login`, { email, password }).pipe(
+        tap(response => {
+            console.log("HTTP login response:", response);
+        }),
+        catchError(err => {
+            console.error("HTTP login error:", err);
+            throw err;  // Re-throw the error to be caught by the caller.
+        })
+    );
+}
   
 
   // CREATE =>  POST: add a new user to the server

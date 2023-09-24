@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from 'src/app/pages/user/user.model';
+import { AuthenticationService } from './AuthentificationService';
 
 @Component({
   selector: 'app-login',
@@ -26,14 +27,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private authentificationService: AuthenticationService ,
     private route: ActivatedRoute,
     private router: Router
   ) {
     this.isLoading$ = this.authService.isLoading$;
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
+  
   }
 
   ngOnInit(): void {
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     }
   
-    this.authService.login(this.f.email.value, this.f.password.value)
+    this.authentificationService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {

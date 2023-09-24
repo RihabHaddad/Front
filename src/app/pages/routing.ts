@@ -16,6 +16,7 @@ import { DistancetravelledComponent } from './distancetravelled/distancetravelle
 import { EcodrivingComponent } from './ecodriving/ecodriving.component';
 import { DistanceComponent } from './distance/distance.component';
 import { GestionAssuresComponent } from './gestion-assures/gestion-assures.component';
+import { OverviewComponent } from '../modules/account/overview/overview.component';
 
 
 const Routing: Routes = [
@@ -77,6 +78,11 @@ const Routing: Routes = [
     path: 'Cards',
     component: CardsComponent,
   },
+  {
+    path: 'eco',
+    component: OverviewComponent,
+  },
+  
   {
     path: 'AddCards',
     component: AddCardComponent,
