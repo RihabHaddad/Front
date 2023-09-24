@@ -18,12 +18,13 @@ stages:
     - script: |
         npm install -g @angular/cli
         npm install
+        npm install http-server -g
         ng build --prod
-      displayName: 'Installer Angular CLI et construire l''application'
+      displayName: 'Installer Angular CLI, http-server et construire l''application'
 
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.SourcesDirectory)/dist'  
+        pathtoPublish: '$(Build.SourcesDirectory)/dist/AutoGuard'  
         artifactName: 'angular-app'
       displayName: 'Publier l''application Angular'
 
@@ -47,7 +48,7 @@ stages:
         WebAppName: 'AutoGuard'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/app'
         RuntimeStack: 'NODE|16.20.1'
-        StartupCommand: 'npm start'  
+        StartupCommand: 'http-server -p 8080 -c-1 .'  
 
     - task: PublishPipelineArtifact@1
       inputs:
