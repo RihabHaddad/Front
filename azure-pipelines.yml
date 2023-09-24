@@ -18,13 +18,12 @@ stages:
     - script: |
         npm install -g @angular/cli
         npm install
-        npm install http-server -g
         ng build --prod
-      displayName: 'Installer Angular CLI, http-server et construire l''application'
+      displayName: 'Installer les dépendances et construire l''application'
 
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.SourcesDirectory)/dist/'  
+        pathtoPublish: '$(Build.SourcesDirectory)/dist/demo1'  # Assurez-vous que ce chemin est correct en fonction de la configuration de votre angular.json.
         artifactName: 'angular-app'
       displayName: 'Publier l''application Angular'
 
@@ -48,7 +47,7 @@ stages:
         WebAppName: 'AutoGuard'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/app'
         RuntimeStack: 'NODE|16.20.1'
-        StartupCommand: 'http-server -p 8080 -c-1 .'  
+        StartupCommand: 'npm run start:prod'
 
     - task: PublishPipelineArtifact@1
       inputs:
