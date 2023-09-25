@@ -21,9 +21,9 @@ stages:
         ng build --prod
       displayName: 'Installer les dépendances et construire l''application'
 
-    - task: PublishBuildArtifacts@1
+     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.SourcesDirectory)/a/app'
+        pathtoPublish: '$(Build.SourcesDirectory)/dist/demo1'
         artifactName: 'angular-app'
       displayName: 'Publier l''application Angular'
 
