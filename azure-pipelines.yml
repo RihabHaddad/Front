@@ -40,17 +40,16 @@ stages:
       displayName: 'Télécharger l''application Angular depuis l''artefact'
 
     - task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'pfe'
-    appType: 'webAppLinux'
-    WebAppName: 'AutoGuard'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/app/demo1'
-    RuntimeStack: 'NODE|16.20.1'
-    StartupCommand: 'npm run start:prod'
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'pfe'
+        appType: 'webAppLinux'
+        WebAppName: 'AutoGuard'
+        packageForLinux: '$(Build.ArtifactStagingDirectory)/app/demo1'
+        RuntimeStack: 'NODE|16.20.1'
+        StartupCommand: 'npm run start:prod'
 
-
-     - task: PublishPipelineArtifact@1
+    - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)'  
         artifactName: 'deployment-logs'
