@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:prod": "npx http-server -p 8080 -c-1",
+    "start:prod": "npx http-server ./dist/demo1 -p 8080 -c-1",  
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

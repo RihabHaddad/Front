@@ -23,7 +23,7 @@ stages:
 
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.SourcesDirectory)' # Assurez-vous que ce chemin est correct en fonction de la configuration de votre angular.json.
+        pathtoPublish: '$(Build.SourcesDirectory)/dist/demo1'
         artifactName: 'angular-app'
       displayName: 'Publier l''application Angular'
 
@@ -40,14 +40,15 @@ stages:
       displayName: 'Télécharger l''application Angular depuis l''artefact'
 
     - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'pfe'
-        appType: 'webAppLinux'
-        WebAppName: 'AutoGuard'
-        packageForLinux: '$(Build.ArtifactStagingDirectory)/app'
-        RuntimeStack: 'NODE|16.20.1'
-        StartupCommand: 'npm run start:prod'
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'pfe'
+    appType: 'webAppLinux'
+    WebAppName: 'AutoGuard'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/app/demo1'
+    RuntimeStack: 'NODE|16.20.1'
+    StartupCommand: 'npm run start:prod'
+
 
     - task: PublishPipelineArtifact@1
       inputs:
