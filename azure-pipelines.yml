@@ -22,10 +22,10 @@ stages:
       displayName: 'Installer les dépendances et construire l''application'
 
     - task: PublishBuildArtifacts@1
-      inputs:
-        pathtoPublish: '$(Build.SourcesDirectory)/app'
-        artifactName: 'angular-app'
-      displayName: 'Publier l''application Angular'
+       inputs:
+        pathtoPublish: '$(Build.SourcesDirectory)/a/app'
+         artifactName: 'angular-app'
+       displayName: 'Publier l''application Angular'
 
 - stage: Deploy
   displayName: 'Deploy Stage'
