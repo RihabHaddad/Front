@@ -23,7 +23,7 @@ stages:
 
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.SourcesDirectory)/dist/demo1'
+        pathtoPublish: '$(Build.SourcesDirectory)/app'
         artifactName: 'angular-app'
       displayName: 'Publier l''application Angular'
 
@@ -45,7 +45,7 @@ stages:
         azureSubscription: 'pfe'
         appType: 'webAppLinux'
         WebAppName: 'AutoGuard'
-        packageForLinux: '$(Build.ArtifactStagingDirectory)/app/demo1'
+        packageForLinux: '$(Pipeline.Workspace)/a/angular-app'
         RuntimeStack: 'NODE|16.20.1'
         StartupCommand: 'npm run start:prod'
 
