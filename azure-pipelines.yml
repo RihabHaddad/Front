@@ -45,7 +45,7 @@ stages:
         azureSubscription: 'pfe'
         appType: 'webAppLinux'
         WebAppName: 'AutoGuard'
-        packageForLinux: '$(Pipeline.Workspace)/a/angular-app'
+        packageForLinux: '$(Pipeline.Workspace)/a/app'
         RuntimeStack: 'NODE|16.20.1'
         StartupCommand: 'npm run start:prod'
 
