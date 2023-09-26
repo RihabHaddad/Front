@@ -23,7 +23,7 @@ stages:
 
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.SourcesDirectory)/dist/demo1'
+        pathtoPublish: '$(Build.SourcesDirectory)/dist/demo1' # Assurez-vous que ce chemin est correct en fonction de la configuration de votre angular.json.
         artifactName: 'angular-app'
       displayName: 'Publier l''application Angular'
 
@@ -36,18 +36,17 @@ stages:
     - task: DownloadPipelineArtifact@2
       inputs:
         artifactName: 'angular-app'
-        targetPath: '/home/rihab/myagent/_work/2/a/app'
+        targetPath: '$(Build.ArtifactStagingDirectory)/app'
       displayName: 'Télécharger l''application Angular depuis l''artefact'
 
-    - task: AzureRmWebAppDeployment@4
+    - task: AzureCLI@2
       inputs:
-        ConnectionType: 'AzureRM'
         azureSubscription: 'pfe'
-        appType: 'webAppLinux'
-        WebAppName: 'AutoGuard'
-        packageForLinux: '$(Pipeline.Workspace)/a/app'
-        RuntimeStack: 'NODE|16.20.1'
-        StartupCommand: 'npm run start:prod'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az storage blob upload-batch --account-name pfeapp--destination $web --source $(Build.ArtifactStagingDirectory)/app
+      displayName: 'Déployer vers Azure Blob Storage'
 
     - task: PublishPipelineArtifact@1
       inputs:
