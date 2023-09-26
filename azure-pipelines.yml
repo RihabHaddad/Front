@@ -45,7 +45,7 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az storage blob upload-batch --account-name pfeapp--destination $web --source $(Build.ArtifactStagingDirectory)/app
+          az storage blob upload-batch --account-name pfeapp --destination '$web' --source $(Build.ArtifactStagingDirectory)/app
       displayName: 'Déployer vers Azure Blob Storage'
 
     - task: PublishPipelineArtifact@1
