@@ -23,7 +23,7 @@ stages:
 
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.SourcesDirectory)/dist/demo1' # Assurez-vous que ce chemin est correct en fonction de la configuration de votre angular.json.
+        pathtoPublish: '$(Build.SourcesDirectory)/dist/demo1' 
         artifactName: 'angular-app'
       displayName: 'Publier l''application Angular'
 
@@ -45,7 +45,8 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az storage blob upload-batch --account-name pfeapp --destination '$web' --source $(Build.ArtifactStagingDirectory)/app
+          az storage blob upload-batch --account-name pfeapp --destination '$web' 
+          --source $(Build.ArtifactStagingDirectory)/app
       displayName: 'Déployer vers Azure Blob Storage'
 
     - task: PublishPipelineArtifact@1
